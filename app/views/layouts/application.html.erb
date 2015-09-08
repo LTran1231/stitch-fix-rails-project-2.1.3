@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>TakeHomeChallenge</title>
+  <%= stylesheet_link_tag    'application', media: 'all' %>
+  <%= javascript_include_tag 'application' %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+
+<div class="container">
+  <h1>Stitch Fix Clearance Tool</h1>
+  <%- if flash[:notice] -%>
+    <div class="alert alert-info" role="alert">
+      <%= flash[:notice].html_safe %>
+    </div>
+  <%- end -%>
+  <%- if flash[:alert] -%>
+    <div class="alert alert-danger" role="alert">
+      <%= flash[:alert].html_safe %>
+    </div>
+  <%- end -%>
+  <%= yield %>
+</div>
+
+</body>
+</html>
