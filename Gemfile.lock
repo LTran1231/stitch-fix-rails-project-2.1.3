@@ -46,6 +46,7 @@ GEM
     autoprefixer-rails (5.1.5)
       execjs
       json
+    awesome_print (1.6.1)
     bootstrap-sass (3.3.3)
       autoprefixer-rails (>= 5.0.0.1)
       sass (>= 3.2.19)
@@ -178,6 +179,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  awesome_print
   bootstrap-sass
   capybara
   coffee-rails
@@ -191,3 +193,6 @@ DEPENDENCIES
   selenium-webdriver
   sqlite3
   uglifier
+
+BUNDLED WITH
+   1.10.6

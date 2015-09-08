@@ -7,6 +7,7 @@ gem "uglifier"
 gem "coffee-rails"
 gem "jquery-rails"
 gem "bootstrap-sass"
+gem 'awesome_print'
 
 group :test, :development do
   gem "rspec-rails"
