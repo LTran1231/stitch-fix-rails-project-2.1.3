@@ -4,3 +4,4 @@ log/*.log
 .bundle
 tmp
 db/*.sqlite3
+vendor
