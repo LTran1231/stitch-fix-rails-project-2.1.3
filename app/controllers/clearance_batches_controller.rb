@@ -12,6 +12,7 @@ class ClearanceBatchesController < ApplicationController
       render "_display_item", locals: {item: item}, layout: false
     else
       input_status
+      render json: input_status, status: 400, layout: false
     end
     # find item by id and add to potential batch
   end
