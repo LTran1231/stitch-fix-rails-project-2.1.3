@@ -13,8 +13,12 @@ class ClearancingService
         clearancing_status.item_ids_to_clearance << potential_item_id
       end
     end
-
     clearance_items!(clearancing_status) 
+  end
+
+  def process_item(itemID)
+    potential_item_id = itemID.to_i
+    clearancing_error = what_is_the_clearancing_error?(potential_item_id)
   end
 
 private

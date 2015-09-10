@@ -18,12 +18,8 @@
 //= require_tree .
 
 $(function () {
-	itemsTableSorter('#itemsTable');
-  
+
+  addItemToBatch();
 
 })
-	// var itemsTableSorter = function(cssSelector){
-	// 	$(cssSelector).tablesorter({
-	// 	  sortList: [[1,0]]
-	// 	});
-	// }
+
