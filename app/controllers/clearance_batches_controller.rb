@@ -2,9 +2,11 @@ class ClearanceBatchesController < ApplicationController
 
   def index
     @clearance_batches  = ClearanceBatch.all
+    p "*" * 100
   end
 
   def create
+    p "~" * 100
     clearancing_status = ClearancingService.new.process_file(params[:csv_batch_file].tempfile)
     clearance_batch    = clearancing_status.clearance_batch
     alert_messages     = []
