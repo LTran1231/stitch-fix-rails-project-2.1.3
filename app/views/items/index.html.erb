@@ -1,0 +1,24 @@
+<table id="itemsTable" class="table table-hover">
+	<thead>
+		<tr>
+			<th>Item # </th>
+			<th>Name</th>
+			<th>Status</th>
+			<th>Wholesale Price, $</th>
+			<th>Price Sold, $</th>
+		</tr>
+	</thead>
+	<tbody>
+		<% @items.each do |item| %>
+			<tr>
+				<td><%= item.id %></td>
+				<td><%= item.style.name %></td>
+				<td><%= item.status %></td>
+				<td><%= item.style.wholesale_price %></td>
+				<td><%= item.price_sold %></td>
+			</tr>
+		<% end %>
+	</tbody>
+
+  
+</table>

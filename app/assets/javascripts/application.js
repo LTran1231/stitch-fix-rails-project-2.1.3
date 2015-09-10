@@ -16,3 +16,14 @@
 //= require bootstrap
 //= require bootstrap-sprockets
 //= require_tree .
+
+$(function () {
+	itemsTableSorter('#itemsTable');
+  
+
+})
+	// var itemsTableSorter = function(cssSelector){
+	// 	$(cssSelector).tablesorter({
+	// 	  sortList: [[1,0]]
+	// 	});
+	// }
