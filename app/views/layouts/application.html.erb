@@ -14,7 +14,7 @@
 
   <div id="wrapper">
     <!-- Navigation -->
-    <nav class="navbar navbar-fixed-top navbar-default navbar-theme" role="navigation">
+    <nav class="navbar navbar-fixed-top navbar-theme" role="navigation">
       <div class="navbar-header">
         <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
             <span class="sr-only">Toggle navigation</span>
@@ -31,9 +31,23 @@
       <!-- Sidebar Menu Items - These collapse to the responsive navigation menu on small screens -->
       <div class="collapse navbar-collapse navbar-ex1-collapse">
         <ul class="nav navbar-nav side-nav">
-          <li class="">
-            <a href="index.html"><i class="fa fa-fw fa-dashboard"></i> Items</a>
+          <li>
+            <%= link_to items_path do %>
+            <i class="fa fa-fw fa-dashboard"></i> Items
+            <% end %>
           </li>
+           <li>
+            <a href="javascript:;" data-toggle="collapse" data-target=".sort-items"><i class="fa fa-fw fa-arrows-v"></i> Items <i class="fa fa-fw fa-caret-down"></i></a>
+            <ul class="sort-items collapse">
+                <li>
+                    <a href="#">Sellable Items</a>
+                </li>
+                <li>
+                    <a href="#">Clearaced Items</a>
+                </li>
+            </ul>
+          </li>
+        
           <li>
             <a href="charts.html"><i class="fa fa-fw fa-bar-chart-o"></i> Clearance Batches</a>
           </li>
