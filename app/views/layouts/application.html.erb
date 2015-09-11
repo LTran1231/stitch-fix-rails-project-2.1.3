@@ -49,10 +49,14 @@
           </li>
         
           <li>
-            <a href="charts.html"><i class="fa fa-fw fa-bar-chart-o"></i> Clearance Batches</a>
+            <%= link_to clearance_batches_path do %>
+              <i class="fa fa-fw fa-table"></i> Clearance Batches
+            <% end %>
           </li>
           <li>
-            <a href="tables.html"><i class="fa fa-fw fa-table"></i> </a>
+            <%= link_to new_clearance_batch_path do %>
+              <i class="fa fa-fw fa-edit"></i> Create a New Batch
+            <% end %>
           </li>
           <li>
             <a href="forms.html"><i class="fa fa-fw fa-edit"></i> </a>

@@ -5,6 +5,10 @@ class ClearanceBatchesController < ApplicationController
     p "*" * 100
   end
 
+  def new
+    @clearance_batch = ClearanceBatch.new
+  end
+
   def potential_clearance_item
     input_status = ClearancingService.new.process_item(params[:itemID])
     if input_status.nil?
@@ -14,12 +18,12 @@ class ClearanceBatchesController < ApplicationController
       input_status
       render json: input_status, status: 400, layout: false
     end
-    # find item by id and add to potential batch
+
   end
 
   def create
     p "~" * 100
-    clearancing_status = ClearancingService.new.process_file(params[:itemID])
+    clearancing_status = ClearancingService.process_item(params[:itemID])
     clearance_batch    = clearancing_status.clearance_batch
     alert_messages     = []
     if clearance_batch.persisted?

@@ -7,7 +7,7 @@ var addItemToBatch = (function(){
 		var data = $target.serialize();
 		$.post(url, data).done(function(data){
 			$('.displayItemWrapper tbody').append(data);
-			$('.displayItemWrapper tbody').val('');
+			$('#itemID').val('');
 		}).fail(function(error){
 			console.log(error);
 			$('.alert').empty();
