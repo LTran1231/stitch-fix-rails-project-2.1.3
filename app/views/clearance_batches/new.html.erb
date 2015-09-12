@@ -6,7 +6,7 @@
         <div class="input-group add-on">
           <%= text_field_tag "itemID", "", placeholder: "Enter Item Number", class: "form-control" %>
             <div class="input-group-btn">
-              <%= button_tag(type: "submit", class: "btn btn-default") do %>
+              <%= button_tag(name: "add_item", class: "btn btn-default add_item_to_batch") do %>
                 <i class="fa fa-search"></i>
               <% end %>
             </div>
@@ -16,17 +16,25 @@
   </div>
 </div>
 
-<div class="displayItemWrapper">
-  <table id="itemsTable" class="table table-hover">
-    <thead>
-      <tr>
-        <th>Item # </th>
-        <th>Name</th>
-        <th>Status</th>
-        <th>Wholesale Price, $</th>
-        <th>Price Sold, $</th>
-      </tr>
-    </thead>
-    <tbody></tbody>
-  </table>
+<div class="save_items_to_new_batch">
+  <%= form_tag(clearance_batches_path) do  %>
+    <div class="displayItemWrapper">
+      <table id="itemsTable" class="table table-hover">
+        <thead>
+          <tr>
+            <th>Item # </th>
+            <th>Name</th>
+            <th>Status</th>
+            <th>Wholesale Price, $</th>
+            <th>Price Sold, $</th>
+          </tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+    </div>
+    <%= button_tag(name: "save", class: "btn btn-default") do %>
+       Save
+    <% end %>
+  <% end %>
 </div>
+

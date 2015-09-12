@@ -6,22 +6,21 @@ class ClearanceBatchesController < ApplicationController
   end
 
   def new
-    @clearance_batch = ClearanceBatch.new
   end
 
   def potential_clearance_item
-    input_status = ClearancingService.new.process_item(params[:itemID])
-    if input_status.nil?
-      item = Item.find(params[:itemID])
+    clearancing_status = ClearancingService.process_item(params[:itemID])
+    if clearancing_status.item_id_to_clearance
+      item = clearancing_status.item_id_to_clearance
       render "_display_item", locals: {item: item}, layout: false
     else
-      input_status
-      render json: input_status, status: 400, layout: false
+      error = clearancing_status.error
+      render json: error, status: 400, layout: false
     end
-
   end
 
   def create
+    binding.pry
     p "~" * 100
     clearancing_status = ClearancingService.process_item(params[:itemID])
     clearance_batch    = clearancing_status.clearance_batch

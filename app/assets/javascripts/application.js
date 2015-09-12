@@ -19,7 +19,8 @@
 
 $(function () {
 
-  addItemToBatch();
+  ClearanceBatch.clearancingItem('.searchbar form');
+  ClearanceBatch.saveItemsToBatch();
 
 })
 
