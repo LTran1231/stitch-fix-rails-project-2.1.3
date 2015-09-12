@@ -1,5 +1,3 @@
-  
-
 <table class="table table-striped clearance_batches">
   <thead>
     <tr>
@@ -9,12 +7,14 @@
     </tr>
   </thead>
   <tbody>
-    <%- @clearance_batches.each do |clearance_batch| -%>
-      <tr>
-        <td>Clearance Batch <%= clearance_batch.id %></td>
-        <td><%= l(clearance_batch.created_at, format: :short) %></td>
-        <td><%= clearance_batch.items.count %></td>
-      </tr>
-    <%- end -%>
+    <% if @clearance_batches %>
+      <%- @clearance_batches.each do |clearance_batch| -%>
+        <tr>
+          <td>Clearance Batch <%= clearance_batch.id %></td>
+          <td><%= l(clearance_batch.created_at, format: :short) %></td>
+          <td><%= clearance_batch.items.count %></td>
+        </tr>
+      <%- end -%>
+    <% end %>
   </tbody>
 </table>

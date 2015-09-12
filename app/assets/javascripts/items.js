@@ -1,3 +1,7 @@
+var routeTo = (function(route){
+	window.location.href = route;
+});
+
 var ClearanceBatch = (function(){
 
 	var clearancingItem = (function(cssSelectorForm){
@@ -11,23 +15,17 @@ var ClearanceBatch = (function(){
 				$('.displayItemWrapper tbody').append(data);
 				$('#itemID').val('');
 			}).fail(function(error){
-				console.log(error);
-				$('.alert').empty();
-				$('.alert').append(error.responseText).show();
+				$('.flash-messages').empty();
+				$('.flash-messages').append(error.responseText).show();
 			})
 		})
 	});
 
-	var saveItemsToBatch = (function(){
-		$('.save_items_to_new_batch form').on('submit', function(event){
+	var saveItemsToBatch = (function(cssSelectorForm){
+		$(cssSelectorForm).on('submit', function(event){
 			event.preventDefault();
 			var $target = $(event.target);
 			var url = $target.attr('action');
-
-			// var data = $('.item_id_for_clearance').contents();
-			
-
-			// $(".item_id_for_clearance").val() || [];
 
 			var itemids = [];
 			$('.item_id_for_clearance').each(function(index, input){
@@ -36,15 +34,15 @@ var ClearanceBatch = (function(){
 
 			var data = $target.serialize()+"&itemids="+itemids;
 
-			// for(var index = 0; index < data.length; index++ ){
-			// 	var itemids = (data[index]) + " "
-			// 	return itemids;
-			// }
-
 			$.post(url, data).done(function(data){
 				console.log(data);
+				routeTo(location.origin);
+				$('.flash-messages').empty();
+				$('.flash-messages').append(data).show();
 
-			})
+			}).fail(function(error){
+				$('.flash-messages').empty();
+				$('.flash-messages').append(error).show();			})
 			
 		})
 	})

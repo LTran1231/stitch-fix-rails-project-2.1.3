@@ -70,17 +70,8 @@
 
       <div class="container-fluid">
           <h1>Stitch Fix Clearance Tool</h1>
-          <%- if flash[:notice] -%>
-            <div class="alert alert-info" role="alert">
-              <%= flash[:notice].html_safe %>
-            </div>
-          <%- end -%>
-          <%- if flash[:alert] -%>
-            <div class="alert alert-danger" role="alert">
-              <%= flash[:alert].html_safe %>
-            </div>
-          <%- end -%>
-          <div class="alert alert-danger" style="display: none;"></div>
+          
+          <div class="flash-messages" style="display: none;"></div>
 
           <%= yield %>
       <!-- /.container-fluid -->

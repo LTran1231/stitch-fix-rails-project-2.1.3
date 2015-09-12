@@ -3,20 +3,6 @@ require 'ostruct'
 class ClearancingService
   class << self
 
-    def process_file(uploaded_file)
-      clearancing_status      = create_clearancing_status
-      CSV.foreach(uploaded_file, headers: false) do |row|  
-        potential_item_id = row[0].to_i
-        clearancing_error = what_is_the_clearancing_error?(potential_item_id)
-        if clearancing_error
-          clearancing_status.errors << clearancing_error # handle error one item at a time
-        else
-          clearancing_status.item_id_to_clearance << potential_item_id
-        end
-      end
-      clearance_items!(clearancing_status) 
-    end
-
     def process_item(itemID)
       clearancing_status = create_clearancing_status
       potential_item_id = itemID.to_i
@@ -30,15 +16,21 @@ class ClearancingService
       clearancing_status
     end
 
+    def saving_items(itemids)
+      clearancing_status = create_clearancing_status
+      clearancing_status.item_ids_to_save = itemids.split(',')
+      clearance_items!(clearancing_status) 
+    end
+
 
 
   private
 
     def clearance_items!(clearancing_status)
-      if clearancing_status.item_id_to_clearance.any? 
+      if clearancing_status.item_ids_to_save.any? 
         Item.transaction do
           clearancing_status.clearance_batch.save!
-          clearancing_status.item_id_to_clearance.each do |item_id|
+          clearancing_status.item_ids_to_save.each do |item_id|
             item = Item.find(item_id)
             item.clearance!
             clearancing_status.clearance_batch.items << item
@@ -66,6 +58,7 @@ class ClearancingService
     def create_clearancing_status
       OpenStruct.new(
         clearance_batch: ClearanceBatch.new,
+        item_ids_to_save: nil,
         item_id_to_clearance: nil,
         error: nil)
     end

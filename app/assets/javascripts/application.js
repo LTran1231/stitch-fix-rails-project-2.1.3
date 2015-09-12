@@ -20,7 +20,9 @@
 $(function () {
 
   ClearanceBatch.clearancingItem('.searchbar form');
-  ClearanceBatch.saveItemsToBatch();
+  ClearanceBatch.saveItemsToBatch('.save_items_to_new_batch form');
+
+  
 
 })
 

@@ -14,28 +14,42 @@ class ClearanceBatchesController < ApplicationController
       item = clearancing_status.item_id_to_clearance
       render "_display_item", locals: {item: item}, layout: false
     else
-      error = clearancing_status.error
-      render json: error, status: 400, layout: false
+      flash[:notice] = nil
+      flash.now[:alert] = clearancing_status.error
+      render "shared/_flash_messages", status: 400, layout: false
     end
   end
 
   def create
-    binding.pry
-    p "~" * 100
-    clearancing_status = ClearancingService.process_item(params[:itemID])
-    clearance_batch    = clearancing_status.clearance_batch
-    alert_messages     = []
+
+    clearancing_status = ClearancingService.saving_items(params[:itemids])
+    clearance_batch = clearancing_status.clearance_batch
     if clearance_batch.persisted?
-      flash[:notice]  = "#{clearance_batch.items.count} items clearanced in batch #{clearance_batch.id}"
+      flash.now[:notice] = "#{clearance_batch.items.count} items clearanced in batch #{clearance_batch.id}"
     else
-      alert_messages << "No new clearance batch was added"
+      flash.now[:alert] = "No new clearance batch was added"
+      # render "shared/_flash_messages", status: 400, layout: false 
     end
-    if clearancing_status.errors.any?
-      alert_messages << "#{clearancing_status.errors.count} item ids raised errors and were not clearanced"
-      clearancing_status.errors.each {|error| alert_messages << error }
-    end
-    flash[:alert] = alert_messages.join("<br/>") if alert_messages.any?
-    redirect_to action: :index
+      render "shared/_flash_messages", layout: false
   end
+
+    
+
+  #   p "~" * 100
+  #   clearancing_status = ClearancingService.process_item(params[:itemID])
+  #   clearance_batch    = clearancing_status.clearance_batch
+  #   alert_messages     = []
+  #   if clearance_batch.persisted?
+  #     flash[:notice]  = "#{clearance_batch.items.count} items clearanced in batch #{clearance_batch.id}"
+  #   else
+  #     alert_messages << "No new clearance batch was added"
+  #   end
+  #   if clearancing_status.errors.any?
+  #     alert_messages << "#{clearancing_status.errors.count} item ids raised errors and were not clearanced"
+  #     clearancing_status.errors.each {|error| alert_messages << error }
+  #   end
+  #   flash[:alert] = alert_messages.join("<br/>") if alert_messages.any?
+  #   redirect_to action: :index
+  # end
 
 end
