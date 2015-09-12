@@ -17,4 +17,13 @@
 
 h1, .h1, h2, .h2, h3, .h3 {
 	color: #9DD5CC !important;
+	font-family: "BrandonGrotesque-Bold", sans-serif !important;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  padding-top: 30px;
 }
+
+.displayNone {
+	display: none;
+}
+

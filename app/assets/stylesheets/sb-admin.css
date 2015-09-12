@@ -9,6 +9,8 @@
 body {
     margin-top: 100px;
     background-color: #f7f5f2;
+    font-family: "BrandonText-Regular", sans-serif;
+    color: #847c77;
 }
 
 @media(min-width:768px) {

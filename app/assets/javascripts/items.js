@@ -11,7 +11,9 @@ var ClearanceBatch = (function(){
 			var $target = $(this.form);
 			var url = $target.attr('action');
 			var data = $target.serialize()+"&add_item=add_item";
+
 			$.post(url, data).done(function(data){
+				$('.save_items_to_new_batch').show();
 				$('.displayItemWrapper tbody').append(data);
 				$('#itemID').val('');
 			}).fail(function(error){
