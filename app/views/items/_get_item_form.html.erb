@@ -1,0 +1,39 @@
+
+
+<div id="wrapper">
+	<div class="col-sm-12">
+		<div class="searchbar">
+			<%= form_tag(get_item_path, role: "form") do %>
+				<div class="input-group add-on">
+					<%= text_field_tag "itemID", "", placeholder: "Search Item #, Name, Status", class: "form-control" %>
+						<div class="input-group-btn">
+							<%= button_tag(type: "submit", class: "btn btn-default") do %>
+								<i class="fa fa-search"></i>
+							<% end %>
+						</div>
+				</div>
+			<% end %>
+		</div>
+	</div>
+</div>
+
+<table class="table table-striped clearance_batches">
+  <thead>
+    <tr>
+      <th></th>
+      <th>Date clearanced</th>
+      <th>Number of items clearanced</th>
+    </tr>
+  </thead>
+  <tbody>
+    <%- @clearance_batches.each do |clearance_batch| -%>
+      <tr>
+        <td>Clearance Batch <%= clearance_batch.id %></td>
+        <td><%= l(clearance_batch.created_at, format: :short) %></td>
+        <td><%= clearance_batch.items.count %></td>
+      </tr>
+    <%- end -%>
+  </tbody>
+</table>
+
+

@@ -12,6 +12,7 @@ gem "font-awesome-rails"
 
 
 group :test, :development do
+	gem 'pry-byebug'
   gem "rspec-rails"
   gem "factory_girl_rails"
   gem "capybara"

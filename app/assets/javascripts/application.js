@@ -18,12 +18,11 @@
 //= require_tree .
 
 $(function () {
-	itemsTableSorter('#itemsTable');
+
+  ClearanceBatch.clearancingItem('.searchbar form');
+  ClearanceBatch.saveItemsToBatch('.save_items_to_new_batch form');
+
   
 
 })
-	// var itemsTableSorter = function(cssSelector){
-	// 	$(cssSelector).tablesorter({
-	// 	  sortList: [[1,0]]
-	// 	});
-	// }
+

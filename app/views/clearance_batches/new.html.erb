@@ -1,0 +1,42 @@
+<h2 class="text-center">Create a New Batch</h2>
+<div class="flash-messages displayNone"></div>
+<div class="col-sm-12 text-center">
+  <div class="searchbar">
+    <%= form_tag(potential_clearance_item_path, role: "form") do %>
+      <div class="input-group add-on">
+        <%= text_field_tag "itemID", "", placeholder: "Enter Item Number", class: "form-control" %>
+          <div class="input-group-btn">
+            <%= button_tag(name: "add_item", class: "btn btn-default add_item_to_batch") do %>
+              <i class="fa fa-search"></i>
+            <% end %>
+          </div>
+      </div>
+    <% end %>
+  </div>
+</div>
+
+
+<div class="save_items_to_new_batch displayNone">
+  <%= form_tag(clearance_batches_path) do  %>
+    <div class="displayItemWrapper">
+      <table id="itemsTable" class="table table-hover">
+        <thead>
+          <tr>
+            <th>Item # </th>
+            <th>Name</th>
+            <th>Color</th>
+            <th>Size</th>
+            <th>Status</th>
+            <th>Retail Price, $</th>
+            <th>Wholesale Price, $</th>
+          </tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+    </div>
+    <%= button_tag(name: "save", class: "btn btn-default") do %>
+       Save
+    <% end %>
+  <% end %>
+</div>
+
