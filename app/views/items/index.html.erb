@@ -1,18 +1,4 @@
-
 <table id="itemsTable" class="table table-hover">
-	<%= render "item_thead" %>
-	<tbody>
-		<% @items.each do |item| %>
-			<tr>
-				<td><%= item.style.name %></td>
-			  <td><%= item.color %></td>
-			  <td><%= item.size %></td>
-			  <td><%= item.status %></td>
-			  <td><%= item.style.retail_price %></td>
-			  <td><%= item.style.wholesale_price %></td>
-			</tr>
-		<% end %>
-	</tbody>
-
-  
+	<thead><%= render "item_thead" %></thead>
+	<tbody><%= render "tbody_multiple_items" %></tbody>
 </table>

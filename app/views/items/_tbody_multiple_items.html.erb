@@ -1,0 +1,22 @@
+
+
+
+<% @items.each do |item| %>
+	<tr>
+	  <td class="item_id_for_clearance"><%= item.id %></td>
+	  <td><%= item.style.name %></td>
+	  <td><%= item.color %></td>
+	  <td><%= item.size %></td>
+	  <td><%= item.status %></td>
+	  <td><%= item.style.retail_price %></td>
+	  <td><%= item.style.wholesale_price %></td>
+	  <td><%= item.price_sold %></td>
+	  <td>
+	  	<% if @clearance_batch %>
+		    <%= link_to clearance_batch_path, class: "remove_item_or_batch" do %>
+		      <i class="fa fa-trash-o"></i>
+		    <% end %>
+	    <% end %>
+	  </td>
+	</tr>
+<% end %>
