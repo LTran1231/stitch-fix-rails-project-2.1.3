@@ -65,14 +65,14 @@ class ClearanceBatchesController < ApplicationController
     if item_id.is_a?(Integer) && item_id != 0
       item = @clearance_batch.items.find(params[:item_id])
       item.reverse_clearanced!
-      render json: item
+      render :nothing => true, :status => 204
     else
       @clearance_batch.items.each do |item|
         item.reverse_clearanced!
       end
       @clearance_batch.destroy!
       # flash.now[:notice] = "Clearance batch # #{params[:id]} is sucessfully deleted"
-      render json: @clearance_batch
+      render :nothing => true, :status => 204
     end
 
   end
