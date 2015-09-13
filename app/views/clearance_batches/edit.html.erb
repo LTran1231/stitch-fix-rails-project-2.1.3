@@ -12,25 +12,8 @@
 	<% if @items %>
 		<div class="displayItemWrapper">
 			<table id="itemsTable" class="table table-hover">
-			  <%= render "items/item_thead" %>
-			  <tbody>
-					<% @items.each do |item| %>
-				  	<tr>
-				  	  <td class="item_id_for_clearance"><%= item.id %></td>
-				  	  <td><%= item.style.name %></td>
-				  	  <td><%= item.color %></td>
-				  	  <td><%= item.size %></td>
-				  	  <td><%= item.status %></td>
-				  	  <td><%= item.style.retail_price %></td>
-				  	  <td><%= item.style.wholesale_price %></td>
-				  	  <td>
-				  	    <%= link_to clearance_batch_path, class: "remove_item_or_batch" do %>
-				  	      <i class="fa fa-trash-o"></i>
-				  	    <% end %>
-				  	  </td>
-				  	</tr>
-				  <% end %>
-			  </tbody>
+			  <thead><%= render "items/item_thead" %></thead>
+			  <tbody><%= render "items/tbody_multiple_items" %></tbody>
 			</table>
 		</div>
   <% end %>

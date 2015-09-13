@@ -20,7 +20,7 @@ class ClearanceBatchesController < ApplicationController
     clearancing_status = ClearancingService.process_item(params[:itemID])
     if clearancing_status.item_id_to_clearance
       item = clearancing_status.item_id_to_clearance
-      render "_display_item", locals: {item: item}, layout: false
+      render "items/items/_tbody_single_item", locals: {item: item}, layout: false
     else
       flash[:notice] = nil
       flash.now[:alert] = clearancing_status.error
@@ -35,7 +35,6 @@ class ClearanceBatchesController < ApplicationController
       flash.now[:notice] = "#{clearance_batch.items.count} items clearanced in batch #{clearance_batch.id}"
     else
       flash.now[:alert] = "No new clearance batch was added"
-      # render "shared/_flash_messages", status: 400, layout: false 
     end
       render "shared/_flash_messages", layout: false
   end
@@ -50,7 +49,7 @@ class ClearanceBatchesController < ApplicationController
         clearance_batch.items << item
         clearance_batch.save!
       end
-      render "_display_item", locals: { item: clearancing_status.item_id_to_clearance }, layout: false
+      render "items/_tbody_single_item", locals: { item: clearancing_status.item_id_to_clearance }, layout: false
     else
       flash.now[:alert] = clearancing_status.error
       render "shared/_flash_messages", status: 400, layout: false
@@ -71,7 +70,6 @@ class ClearanceBatchesController < ApplicationController
         item.reverse_clearanced!
       end
       @clearance_batch.destroy!
-      # flash.now[:notice] = "Clearance batch # #{params[:id]} is sucessfully deleted"
       render :nothing => true, :status => 204
     end
 
