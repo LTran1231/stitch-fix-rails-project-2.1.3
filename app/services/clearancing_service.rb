@@ -22,8 +22,6 @@ class ClearancingService
       clearance_items!(clearancing_status) 
     end
 
-
-
   private
 
     def clearance_items!(clearancing_status)

@@ -7,7 +7,13 @@
   <td><%= item.status %></td>
   <td><%= item.style.retail_price %></td>
   <td><%= item.style.wholesale_price %></td>
+  <% if @clearance_batch %>
+    <td>
+      <%= link_to clearance_batch_path, class: "remove_item_or_batch" do %>
+        <i class="fa fa-trash-o"></i>
+      <% end %>
+    </td>
+  <% end %>
 </tr>
-
 
   

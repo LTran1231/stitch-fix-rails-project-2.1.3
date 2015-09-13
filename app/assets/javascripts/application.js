@@ -21,8 +21,10 @@ $(function () {
 
   ClearanceBatch.clearancingItem('.searchbar form');
   ClearanceBatch.saveItemsToBatch('.save_items_to_new_batch form');
+  ClearanceBatch.removeItemFromBatch('.container-fluid');
+  // ClearanceBatch.deleteBatch('.container-fluid');
 
-  
+
 
 })
 
