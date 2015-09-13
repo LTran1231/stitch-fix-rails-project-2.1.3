@@ -7,6 +7,11 @@
   <td><%= item.status %></td>
   <td><%= item.style.retail_price %></td>
   <td><%= item.style.wholesale_price %></td>
+  <td>
+  	<%= link_to clearance_batch_path(item), method: "destroy" do %>
+  		<i class="fa fa-trash-o"></i>
+  	<% end %>
+  </td>
 </tr>
 
 

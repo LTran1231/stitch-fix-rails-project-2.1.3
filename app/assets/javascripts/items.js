@@ -44,18 +44,34 @@ var ClearanceBatch = (function(){
 
 			}).fail(function(error){
 				$('.flash-messages').empty();
-				$('.flash-messages').append(error).show();			})
-			
+				$('.flash-messages').append(error).show();			
+			})
+		})
+	})
+
+	var removeItemFromBatch = (function(){
+		$('.container-fluid').on('click', '.remove_item', function(event){
+			event.preventDefault();
+			var $target = $(this);
+			var url = location.pathname;
+			var type = "DELETE"
+			var batch_id = $target.closest('.clearance-batch-wrapper').find('h2').html().split(" ").pop();
+			var item_id = $target.closest('tr').find('td').eq(0).html();
+			$.ajax({
+				url: url,
+				type: type,
+				dataType: "JSON",
+				data: { item_id: item_id }
+			})
+				$target.closest('tr').remove();
+
 		})
 	})
 
 	return {
 		clearancingItem: clearancingItem,
-		saveItemsToBatch: saveItemsToBatch
+		saveItemsToBatch: saveItemsToBatch,
+		removeItemFromBatch: removeItemFromBatch
 	}
 	
 })();
-// ('#tblPurchaseOrders tr.PO1').each(function(index, tr) {
-//     var lines = $('td', tr).map(function(index, td) {
-//         return $(td).text();
-//     });

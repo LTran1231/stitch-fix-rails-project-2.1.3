@@ -12,4 +12,11 @@ class Item < ActiveRecord::Base
                        price_sold: style.wholesale_price * CLEARANCE_PRICE_PERCENTAGE)
   end
 
+  def reverse_clearanced!
+  	update_attributes!(status: 'sellable',
+  										 clearance_batch_id: nil,
+  										 price_sold: nil,
+  										 )
+  end
+
 end

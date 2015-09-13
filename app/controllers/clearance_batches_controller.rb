@@ -1,11 +1,16 @@
 class ClearanceBatchesController < ApplicationController
+  before_action :set_clearance_batch, only: [:show, :edit]
 
   def index
     @clearance_batches  = ClearanceBatch.all
   end
 
+  def show 
+  end
+
   def new
   end
+
 
   def potential_clearance_item
     clearancing_status = ClearancingService.process_item(params[:itemID])
@@ -30,6 +35,19 @@ class ClearanceBatchesController < ApplicationController
       # render "shared/_flash_messages", status: 400, layout: false 
     end
       render "shared/_flash_messages", layout: false
+  end
+
+  def destroy
+    @clearance_batch = ClearanceBatch.find(params[:id])
+    item = @clearance_batch.items.find(params[:item_id])
+    item.reverse_clearanced!
+  end
+
+  private
+
+  def set_clearance_batch
+    @clearance_batch = ClearanceBatch.find(params[:id])
+    @items = @clearance_batch.items
   end
 
 end

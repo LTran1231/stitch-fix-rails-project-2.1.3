@@ -1,0 +1,37 @@
+<div class="clearance-batch-wrapper">
+	<h2 class="text-center">Clearance Batches <%= @clearance_batch.id %></h2>
+	<% if @items %>
+		<table id="itemsTable" class="table table-hover">
+		  <thead>
+		    <tr>
+		      <th>Item # </th>
+		      <th>Name</th>
+		      <th>Color</th>
+		      <th>Size</th>
+		      <th>Status</th>
+		      <th>Retail Price, $</th>
+		      <th>Wholesale Price, $</th>
+		    </tr>
+		  </thead>
+		  <tbody>
+				<% @items.each do |item| %>
+			  	<tr>
+			  	  <td><%= item.id %></td>
+			  	  <td><%= item.style.name %></td>
+			  	  <td><%= item.color %></td>
+			  	  <td><%= item.size %></td>
+			  	  <td><%= item.status %></td>
+			  	  <td><%= item.style.retail_price %></td>
+			  	  <td><%= item.style.wholesale_price %></td>
+			  	  <td>
+			  	  	<%= link_to "#", class: "remove_item" do %>
+			  	  		<i class="fa fa-trash-o"></i>
+			  	  	<% end %>
+			  	  </td>
+			  	</tr>
+			  <% end %>
+		  </tbody>
+		</table>
+  <% end %>
+</div>
+

@@ -11,7 +11,7 @@
     <% if @clearance_batches %>
       <%- @clearance_batches.each do |clearance_batch| -%>
         <tr>
-          <td><%= link_to "Clearance Batch #{clearance_batch.id}", clearance_batch_path %></td>
+          <td><%= link_to "Clearance Batch #{clearance_batch.id}", clearance_batch_path(clearance_batch) %></td>
           <td><%= l(clearance_batch.created_at, format: :short) %></td>
           <td><%= clearance_batch.items.count %></td>
         </tr>
