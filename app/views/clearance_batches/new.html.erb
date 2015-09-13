@@ -2,19 +2,11 @@
 <div class="flash-messages displayNone"></div>
 <div class="col-sm-12 text-center">
   <div class="searchbar">
-    <%= form_tag(potential_clearance_item_path, role: "form") do %>
-      <div class="input-group add-on">
-        <%= text_field_tag "itemID", "", placeholder: "Enter Item Number", class: "form-control" %>
-          <div class="input-group-btn">
-            <%= button_tag(name: "add_item", class: "btn btn-default add_item_to_batch") do %>
-              <i class="fa fa-search"></i>
-            <% end %>
-          </div>
-      </div>
+    <%= form_tag potential_clearance_item_path do %>
+      <%= render "search_form" %>
     <% end %>
   </div>
 </div>
-
 
 <div class="save_items_to_new_batch displayNone">
   <%= form_tag(clearance_batches_path) do  %>
@@ -35,7 +27,7 @@
       </table>
     </div>
     <%= button_tag(name: "save", class: "btn btn-default") do %>
-       Save
+      Save
     <% end %>
   <% end %>
 </div>
