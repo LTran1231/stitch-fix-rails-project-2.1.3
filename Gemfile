@@ -9,6 +9,7 @@ gem "jquery-rails"
 gem "bootstrap-sass"
 gem "awesome_print"
 gem "font-awesome-rails"
+gem 'will_paginate'
 
 
 group :test, :development do

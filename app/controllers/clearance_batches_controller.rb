@@ -20,7 +20,7 @@ class ClearanceBatchesController < ApplicationController
     clearancing_status = ClearancingService.process_item(params[:itemID])
     if clearancing_status.item_id_to_clearance
       item = clearancing_status.item_id_to_clearance
-      render "items/items/_tbody_single_item", locals: {item: item}, layout: false
+      render "items/_tbody_single_item", locals: {item: item}, layout: false
     else
       flash[:notice] = nil
       flash.now[:alert] = clearancing_status.error

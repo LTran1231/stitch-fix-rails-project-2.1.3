@@ -1,4 +1,4 @@
-// This is a manifest file that'll be compiled into application.js, which will include all the files
+// This is a manifest file that'll be compiliteed into application.js, which will include all the files
 // listed below.
 //
 // Any JavaScript/Coffee file within this directory, lib/assets/javascripts, vendor/assets/javascripts,
@@ -13,8 +13,8 @@
 //= require jquery
 //= require jquery_ujs
 //= require jquery
-//= require bootstrap
 //= require bootstrap-sprockets
+//= require bootstrap
 //= require_tree .
 
 $(function () {
@@ -22,9 +22,10 @@ $(function () {
   ClearanceBatch.clearancingItem('.searchbar form');
   ClearanceBatch.saveItemsToBatch('.save_items_to_new_batch form');
   ClearanceBatch.removeItemFromBatch('.container-fluid');
-  // ClearanceBatch.deleteBatch('.container-fluid');
 
 
+  // Items.getAll('.all-items');
+  Items.search('.searchbar form');
 
 })
 
