@@ -1,4 +1,18 @@
-<table id="itemsTable" class="table table-hover">
-	<thead><%= render "item_thead" %></thead>
-	<tbody><%= render "tbody_multiple_items" %></tbody>
-</table>
+
+<div class="flash-messages displayNone"></div>
+
+<div class="col-sm-12 text-center">
+  <div class="searchbar top-pad-30px">
+    <%= form_tag search_path, method: "get" do %>
+      <%= render "items_search" %>
+    <% end %>
+  </div>
+</div>
+
+
+
+<div id="items">
+	<%= will_paginate @items %>
+	<%= render 'items' %>
+</div> 
+

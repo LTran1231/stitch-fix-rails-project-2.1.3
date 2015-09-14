@@ -7,7 +7,6 @@ class Item < ActiveRecord::Base
 
   scope :sellable, -> { where(status: 'sellable') }
 
-
   def clearance!
     update_attributes!(status: 'clearanced', 
                        price_sold: calculate_clearance_discount)
@@ -18,6 +17,10 @@ class Item < ActiveRecord::Base
   										 clearance_batch_id: nil,
   										 price_sold: nil,
   										 )
+  end
+
+  def self.search(query)
+    where("status LIKE? OR id LIKE?", "%#{query}%", "#{query}")
   end
 
   private
