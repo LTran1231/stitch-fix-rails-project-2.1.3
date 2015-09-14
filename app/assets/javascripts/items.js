@@ -1,7 +1,7 @@
 var Items = (function(){
 
-	var getAll = (function(cssSelectionLink){
-		$('.side-nav').on('click', cssSelectionLink, function(event){
+	var getAll = (function(cssSelectorLink){
+		$(document).on('click', cssSelectorLink, function(event){
 			event.preventDefault();
 			var $target = $(event.target);
 			var url = $target.attr('href');
@@ -15,18 +15,18 @@ var Items = (function(){
 		})
 	})
 
-	var search = (function(cssSelectionForm){
-		$(cssSelectionForm).on('submit', function(event){
+	var search = (function(cssSelectorForm){
+		$(document).on('submit', cssSelectorForm, function(event){
 			event.preventDefault();
 			var $target = $(event.target);
 			var url = $target.attr('action');
 			var data = $target.serialize();
 
 			$.get(url, data).done(function(response){
-				debugger
+
 				console.log(response);
-				$('#itemsTable tbody').empty();
-				$('#itemsTable tbody').append(response);
+				$('#items').empty();
+				$('#items').append(response);
 
 			}).fail(function(error){
 				console.log(error);
@@ -36,13 +36,23 @@ var Items = (function(){
 		})
 	})
 
+	// var paginate = (function(cssSelector){
+	// 	$(cssSelector).on("click"," #items th a, #items .pagination a", function(event) {
+	// 		event.preventDefault();
+		
+ //    	$.get(this.href).done(function(response){
+ //    		console.log(response);
+ //    		debugger
+
+ //    	})
+ //  	})
+	// })
+
 
 
 	return {
 		getAll: getAll,
-		search: search
+		search: search,
 	}
-
-
 
 })();

@@ -24,8 +24,10 @@ $(function () {
   ClearanceBatch.removeItemFromBatch('.container-fluid');
 
 
-  // Items.getAll('.all-items');
+  Items.getAll('.all-items');
+  Items.getAll('#items th a, #items .pagination a');
   Items.search('.searchbar form');
+  // Items.paginate('.container-fluid');
 
 })
 

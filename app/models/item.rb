@@ -7,7 +7,6 @@ class Item < ActiveRecord::Base
 
   scope :sellable, -> { where(status: 'sellable') }
 
-
   def clearance!
     update_attributes!(status: 'clearanced', 
                        price_sold: calculate_clearance_discount)
@@ -20,15 +19,8 @@ class Item < ActiveRecord::Base
   										 )
   end
 
-  def self.search(input)
-    results = where("status LIKE? OR id LIKE?", "%#{input}%", "#{input}")
-    styles = Style.where("name LIKE? OR type LIKE?", "%#{input}%", "%#{input}%")
-    styles.each do |style|
-      style.items.each do |item|
-        results << item
-      end
-    end
-    results
+  def self.search(query)
+    where("status LIKE? OR id LIKE?", "%#{query}%", "#{query}")
   end
 
   private

@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   resources :items, only: [:index, :edit, :update]
   get "sellable" 		=> "items#sellable"
   get "clearanced" 	=> "items#clearanced"
-  get "search" 		=> "items#search"
+  get "search"			=> "items#search"
+
 
 end
