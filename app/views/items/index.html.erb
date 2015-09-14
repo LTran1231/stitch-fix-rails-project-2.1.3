@@ -3,11 +3,15 @@
 
 <div class="col-sm-12 text-center">
   <div class="searchbar top-pad-30px">
-    <%= form_tag search_path do %>
+    <%= form_tag items_path, method: "get" do %>
       <%= render "items_search" %>
+      <%= will_paginate @items %>
     <% end %>
   </div>
 </div>
+
+
+
 
 <table id="itemsTable" class="table table-hover">
 	<thead><%= render "item_thead" %></thead>

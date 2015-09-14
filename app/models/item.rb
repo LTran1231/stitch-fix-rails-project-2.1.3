@@ -20,6 +20,17 @@ class Item < ActiveRecord::Base
   										 )
   end
 
+  def self.search(input)
+    results = where("status LIKE? OR id LIKE?", "%#{input}%", "#{input}")
+    styles = Style.where("name LIKE? OR type LIKE?", "%#{input}%", "%#{input}%")
+    styles.each do |style|
+      style.items.each do |item|
+        results << item
+      end
+    end
+    results
+  end
+
   private
   
   def calculate_clearance_discount

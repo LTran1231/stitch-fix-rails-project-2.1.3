@@ -1,11 +1,17 @@
 class ItemsController < ApplicationController
 	before_action :set_item, only: [:edit, :update]
+	# layout :false, only: [:index]
 
 	def index
-		@items = Item.all.limit(20)
-
-		# render :index, layout: false
+		input = params[:search]
+		if input
+			@items = Item.search(input).paginate(:per_page => 5, :page => params[:page])
+			render "_tbody_multiple_items", layout: false
+		end
+		@items = Item.paginate(:per_page => 5, :page => params[:page])
 	end
+
+
 
 
 	def sellable
@@ -22,23 +28,23 @@ class ItemsController < ApplicationController
 
 	end
 
-	def search
-		input = params[:search]
-		@items = Item.where("status LIKE? OR id LIKE?", "%#{input}%", "#{input}")
-		search_by_styles = Style.where("name LIKE? OR type LIKE?", "%#{input}%", "%#{input}%")
-		search_by_styles.each do |style|
-			style.items.each do |item|
-				@items << item
-			end
-		end
-		if input.blank? || @items.empty?
-			flash.now[:alert] = "No results found for #{input}"
-			render "shared/_flash_messages", status: 400, layout: false
-		else
-			@items.flatten
-			render "_tbody_multiple_items", layout: false
-		end
-	end
+	# def search
+	# 	input = params[:search]
+	# 	@items = Item.where("status LIKE? OR id LIKE?", "%#{input}%", "#{input}")
+	# 	search_by_styles = Style.where("name LIKE? OR type LIKE?", "%#{input}%", "%#{input}%")
+	# 	search_by_styles.each do |style|
+	# 		style.items.each do |item|
+	# 			@items << item
+	# 		end
+	# 	end
+	# 	if input.blank? || @items.empty?
+	# 		flash.now[:alert] = "No results found for #{input}"
+	# 		render "shared/_flash_messages", status: 400, layout: false
+	# 	else
+	# 		@items.flatten
+	# 		render "_tbody_multiple_items", layout: false
+	# 	end
+	# end
 
 	def update
 	end

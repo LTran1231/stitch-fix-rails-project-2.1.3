@@ -23,6 +23,7 @@ var Items = (function(){
 			var data = $target.serialize();
 
 			$.get(url, data).done(function(response){
+				debugger
 				console.log(response);
 				$('#itemsTable tbody').empty();
 				$('#itemsTable tbody').append(response);
