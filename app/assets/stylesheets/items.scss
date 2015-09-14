@@ -23,3 +23,36 @@
 	-webkit-box-shadow: none;
 	box-shadow: none;
 }
+
+.pagination {
+  text-align: center;
+  padding: 1em;
+}
+
+.pagination a {
+  padding: 0.2em 0.3em;
+  text-decoration: none;
+  border: 2px solid #e9e2dc;
+}
+
+.pagination .current {
+  font-style: normal;
+  background-color: #9DD5CC;
+  display: inline-block;
+  padding: 0.2em 0.3em;
+}
+
+span.previous_page.disabled {
+  display: none;
+}
+
+a.next_page {
+  color: #fff;
+  background: #ff5c61;
+  border-color: #ff5c61;
+}
+
+
+
+
+

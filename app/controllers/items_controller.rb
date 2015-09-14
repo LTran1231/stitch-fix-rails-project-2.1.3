@@ -6,7 +6,7 @@ class ItemsController < ApplicationController
 
 	def index
 		@items = Item.paginate(:page => params[:page]).order('id ASC')
-		
+
 	end
 
 	def search
@@ -16,9 +16,10 @@ class ItemsController < ApplicationController
 		styles.each do |style|
 			@items.concat(style.items)
 		end
-
-
-
+		if query.blank? || @items.empty?
+			flash.now[:alert] = "No results found for #{query}"
+			render "shared/_flash_messages", status: 400, layout: false
+		end
 		render "_items", layout: false
 
 	end
