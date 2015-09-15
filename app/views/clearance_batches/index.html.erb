@@ -17,14 +17,8 @@
           <td><%= l(clearance_batch.created_at, format: :short) %></td>
           <td><%= clearance_batch.items.count %></td>
           <td>
-            <%= link_to clearance_batch_path(clearance_batch), class: "remove_item_or_batch" do -%>
-              <i class="fa fa-trash-o"></i>
-            <% end %>
             <%= link_to edit_clearance_batch_path(clearance_batch), class: "edit_batch" do -%>
               <i class="fa fa-fw fa-edit"></i>
-            <% end %>
-            <%= link_to clearance_batch_path(clearance_batch), class: "share" do %>
-              <i class="fa fa-share-alt"></i>
             <% end %>
           </td>
         </tr>
@@ -32,3 +26,6 @@
     <% end %>
   </tbody>
 </table>
+<div class="items_pagination text-center">
+  <%= will_paginate @items %>
+</div>

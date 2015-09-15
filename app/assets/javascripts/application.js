@@ -19,14 +19,14 @@
 
 $(function () {
 
-  ClearanceBatch.clearancingItem('.searchbar form');
+  ClearanceBatch.clearancingItem('.potential-clearance-item-search form');
   ClearanceBatch.saveItemsToBatch('.save_items_to_new_batch form');
   ClearanceBatch.removeItemFromBatch('.container-fluid');
 
 
   Items.getAll('.all-items');
   Items.getAll('#items th a, #items .pagination a');
-  Items.search('.searchbar form');
+  Items.search('.items-search form');
   // Items.paginate('.container-fluid');
 
 })

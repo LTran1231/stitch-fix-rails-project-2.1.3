@@ -5,13 +5,13 @@ var routeTo = (function(route){
 var ClearanceBatch = (function(){
 
 	var clearancingItem = (function(cssSelectorForm){
-		$(cssSelectorForm).on('click', '.add_item_to_batch', function(event){
+		$(cssSelectorForm).on('submit', function(event){
 			event.preventDefault();
 			$('.alert').hide();
-			var $target = $(this.form);
+			var $target = $(event.target);
 			var url = $target.attr('action');
 			var data = $target.serialize()+"&add_item=add_item";
-			$.post(url, data).done(function(data){
+			$.get(url, data).done(function(data){
 				$('.save_items_to_new_batch').show();
 				$('.displayItemWrapper tbody').append(data);
 				$('#itemID').val('');
@@ -68,12 +68,6 @@ var ClearanceBatch = (function(){
 		})
 	})
 
-	var deleteBatch = (function(cssSelectorLink){
-		$(cssSelectorLink).on('click', '.delete_batch', function(event){
-			event.preventDefault();
-			debugger
-		})
-	})
 
 	return {
 		clearancingItem: clearancingItem,

@@ -2,9 +2,6 @@
 	<tr>
 	  <td class="item_id_for_clearance"><%= item.id %></td>
 	  <td><%= item.style.name %></td>
-	  <% if item.clearance_batch_id %>
-
-	  <% end %>
 	  <td><%= item.color %></td>
 	  <td><%= item.size %></td>
 	  <td><%= item.status %></td>
@@ -12,11 +9,9 @@
 	  <td><%= item.style.wholesale_price %></td>
 	  <td><%= item.price_sold %></td>
 	  <td>
-	  	<% if item.clearance_batch_id %>
-		  	<%= link_to edit_clearance_batch_path(item.clearance_batch_id) do %>
-		  		<i class="fa fa-archive"></i>
-		  	<% end %>
-	  	<% end %>
+	    <%= link_to clearance_batch_path, class: "remove_item_or_batch" do %>
+	      <i class="fa fa-trash-o"></i>
+	    <% end %>
 	  </td>
 	</tr>
 <% end %>

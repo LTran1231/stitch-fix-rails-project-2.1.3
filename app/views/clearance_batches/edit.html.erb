@@ -1,5 +1,9 @@
 <div class="clearance-batch-wrapper">
 	<h2 class="text-center">Clearance Batches <%= @clearance_batch.id %></h2>
+	<%= link_to clearance_batch_path(@clearance_batch), class: "remove_item_or_batch" do -%>
+	  <i class="fa fa-trash-o"></i>
+	<% end %>
+
 	<div class="flash-messages displayNone"></div>
 	<div class="col-sm-12 text-center">
 	  <div class="searchbar">
@@ -13,7 +17,7 @@
 		<div class="displayItemWrapper">
 			<table id="itemsTable" class="table table-hover">
 			  <thead><%= render "items/item_thead" %></thead>
-			  <tbody><%= render "items/tbody_multiple_items" %></tbody>
+			  <tbody><%= render "tbody_multiple_items" %></tbody>
 			</table>
 		</div>
   <% end %>

@@ -7,6 +7,7 @@ class Item < ActiveRecord::Base
 
   scope :sellable, -> { where(status: 'sellable') }
 
+
   def clearance!
     update_attributes!(status: 'clearanced', 
                        price_sold: calculate_clearance_discount)

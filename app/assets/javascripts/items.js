@@ -36,19 +36,6 @@ var Items = (function(){
 		})
 	})
 
-	// var paginate = (function(cssSelector){
-	// 	$(cssSelector).on("click"," #items th a, #items .pagination a", function(event) {
-	// 		event.preventDefault();
-		
- //    	$.get(this.href).done(function(response){
- //    		console.log(response);
- //    		debugger
-
- //    	})
- //  	})
-	// })
-
-
 
 	return {
 		getAll: getAll,

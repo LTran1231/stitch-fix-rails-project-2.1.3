@@ -31,18 +31,13 @@
       <!-- Sidebar Menu Items - These collapse to the responsive navigation menu on small screens -->
       <div class="collapse navbar-collapse navbar-ex1-collapse">
         <ul class="nav navbar-nav side-nav">
-           <li>
-            <%= link_to "javascript:;", data: { toggle: "collapse", target: "#group-items"} do  %>
-              <i class="fa fa-fw fa-arrows-v"></i> Items <i class="fa fa-fw fa-caret-down"></i>
+          <li>
+            <%= link_to items_path, class: "all-items" do %>
+              <i class="fa fa-list"></i> Items
             <% end %>
-            <ul class="collapse" id="group-items">
-              <li><%= link_to "All Items", items_path, class: "all-items" %></li>
-              <li><%= link_to "Sellable Items", sellable_path %></li>
-              <li><%= link_to "Clearaced Items", clearanced_path %></li>
-            </ul>
           </li>
           <li>
-            <%= link_to clearance_batches_path do %>
+            <%= link_to root_path do %>
               <i class="fa fa-archive"></i> Clearance Batches
             <% end %>
           </li>
@@ -51,7 +46,11 @@
               <i class="fa fa-fw fa-edit"></i> Create a New Batch
             <% end %>
           </li>
-
+          <li>
+            <%= link_to "#", class: "share", onclick: "window.print();return false;" do %>
+              <i class="fa fa-share-alt"></i>
+            <% end %>
+          </li>
         </ul>
       </div>
       <!-- /.navbar-collapse -->

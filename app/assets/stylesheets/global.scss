@@ -6,7 +6,12 @@ a {
 	color: #6A615F;
 }
 
-.navbar-theme a:hover {
+.nav a:hover {
+	color: #9DD5CC;
+	background-color: #e9e2dc;
+}
+
+.nav a:focus {
 	color: #9DD5CC;
 	background-color: #e9e2dc;
 }
@@ -47,6 +52,8 @@ a:hover {
 .top-pad-30px {
 	padding-top: 30px;
 }
+
+
 
 
 

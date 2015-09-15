@@ -2,17 +2,17 @@
 <div class="flash-messages displayNone"></div>
 
 <div class="col-sm-12 text-center">
-  <div class="searchbar top-pad-30px">
+  <div class="searchbar items-search top-pad-30px">
     <%= form_tag search_path, method: "get" do %>
       <%= render "items_search" %>
     <% end %>
   </div>
 </div>
 
-
-
-<div id="items" class="items_pagination text-center">
+<div id="items">
 	<%= render 'items' %>
-	<%= will_paginate @items %>
+	<div class="items_pagination text-center">
+		<%= will_paginate @items %>
+	</div>
 </div> 
 

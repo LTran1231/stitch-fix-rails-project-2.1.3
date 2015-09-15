@@ -1,0 +1,43 @@
+<div class="text-center">
+	<%= image_tag("https://s-media-cache-ak0.pinimg.com/avatars/stitchfix-1355586177_140.jpg", class: "fa fa-fw fa-2x", Hspace: "10") %>
+	<%= image_tag("https://d27bvhtwhzf6pr.cloudfront.net/assets/branding/logo-b-2bdbbe3a9e959a90e6ea37ece4b279cd.png") %>
+	<br>
+	<h4>Vendor Name</h4>
+	<h4>Clearance Batch <%= @clearance_batch.id %></h4>
+
+	<h5>Report for <%= Date.parse(@clearance_batch.updated_at.to_s) %></h5>
+</div>
+
+<% if @items %>
+	<div class="displayItemWrapper">
+		<table id="itemsTable" class="table table-hover">
+		  <thead>
+		  	<tr>
+		  	  <th>Item No.</th>
+		  	  <th>Style Name</th>
+		  	  <th>Color</th>
+		  	  <th>Size</th>
+		  	  <th>Price Sold, $</th>
+		  	</tr>
+		  </thead>
+		  <tbody>
+		  	<% @items.each_with_index do |item, index| %>
+		  		<tr>
+		  		  <td><%= index+1 %></td>
+		  		  <td><%= item.style.name %></td>
+		  		  <td><%= item.color %></td>
+		  		  <td><%= item.size %></td>
+		  		  <td><%= item.price_sold %></td>
+		  	<% end %>
+		  </tbody>
+		  <tr>
+		  	<td></td>
+		  	<td></td>
+		  	<td></td>
+		  	<td>Total</td>
+		  	<td>$ <%= @total_amount_sold.round(2) %></td>
+		  </tr>
+		</table>
+	</div>
+<% end %>
+
