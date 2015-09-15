@@ -4,8 +4,6 @@ Rails.application.routes.draw do
   post "potential_clearance_item" => "clearance_batches#potential_clearance_item"
 
   resources :items, only: [:index, :edit, :update]
-  get "sellable" 		=> "items#sellable"
-  get "clearanced" 	=> "items#clearanced"
   get "search"			=> "items#search"
 
 

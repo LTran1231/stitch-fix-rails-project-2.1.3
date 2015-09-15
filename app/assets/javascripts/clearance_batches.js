@@ -1,14 +1,24 @@
-var routeTo = (function(route){
-	window.location.href = route;
-});
-
 var ClearanceBatch = (function(){
+	var getAll = (function(cssSelectorLink){
+		$(document).on('click', cssSelectorLink, function(event){
+			event.preventDefault();
+			var $target = $(event.target);
+			var url = $target.attr('href');
+
+			$.get(url).done(function(data){
+				console.log(data);
+				$('#batches').empty()
+				$('#batches').append(data);
+			})
+
+		})
+	})
 
 	var clearancingItem = (function(cssSelectorForm){
-		$(cssSelectorForm).on('click', '.add_item_to_batch', function(event){
+		$(cssSelectorForm).on('submit', function(event){
 			event.preventDefault();
 			$('.alert').hide();
-			var $target = $(this.form);
+			var $target = $(event.target);
 			var url = $target.attr('action');
 			var data = $target.serialize()+"&add_item=add_item";
 			$.post(url, data).done(function(data){
@@ -53,7 +63,7 @@ var ClearanceBatch = (function(){
 			event.preventDefault();
 			var $target = $(this);
 			var url = $target.attr('href');
-			var type = "DELETE"
+			var type = "DELETE";
 			// var batch_id = $target.closest('.clearance-batch-wrapper').find('h2').html().split(" ").pop();
 			var item_id = $target.closest('tr').find('td').eq(0).html();
 
@@ -62,24 +72,19 @@ var ClearanceBatch = (function(){
 				type: type,
 				dataType: "JSON",
 				data: { item_id: item_id }
-			}).done(function(data){
+			})
+			.done(function(data){
 				$target.closest('tr').remove();
 			})
 		})
 	})
 
-	var deleteBatch = (function(cssSelectorLink){
-		$(cssSelectorLink).on('click', '.delete_batch', function(event){
-			event.preventDefault();
-			debugger
-		})
-	})
 
 	return {
+		getAll: getAll,
 		clearancingItem: clearancingItem,
 		saveItemsToBatch: saveItemsToBatch,
 		removeItemFromBatch: removeItemFromBatch,
-		// deleteBatch: deleteBatch
 	}
 	
 })();

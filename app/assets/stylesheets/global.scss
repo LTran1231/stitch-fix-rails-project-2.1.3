@@ -1,14 +1,63 @@
+body {
+    height: 100%;
+    background-color: #f7f5f2;
+    font-family: "BrandonText-Regular", sans-serif;
+    color: #847c77;
+}
+
+#wrapper {
+    padding-left: 0;
+}
+
+#page-wrapper {
+    width: 100%;
+    padding: 0;
+    background-color: #f7f5f2;
+}
+
 .navbar-theme {
 	background-color: #ede7e3;
 }
 
-a {
+.nav a {
 	color: #6A615F;
+	text-transform: uppercase;
+	font-family: "BrandonText-Regular", sans-serif;
+	font-size: 14px;
+	letter-spacing: 1.5px;
 }
 
-.navbar-theme a:hover {
+.nav a:hover {
 	color: #9DD5CC;
-	background-color: #e9e2dc;
+	background-color: #eeeeee;
+}
+
+.nav li:focus {
+	color: #9DD5CC;
+	background-color: #eeeeee;
+}
+
+.navbar-brand {
+	font-size: 20px;
+  line-height: 22px;
+}
+
+.dropdown-menu li a:hover {
+	color: #9DD5CC;
+	background-color: #eeeeee;
+}
+
+.dropdown-menu {
+	background-color: #ede7e3;
+}
+
+a {
+	color: #9DD5CC;
+}
+
+a:hover {
+	color: #9DD5CC;
+	text-decoration: none;
 }
 
 .table > thead > tr > th {
@@ -27,11 +76,6 @@ h1, .h1, h2, .h2, h3, .h3 {
 	display: none;
 }
 
-a:hover {
-	color: #9DD5CC;
-	text-decoration: none;
-}
-
 .btn {
 	color: white;
 	background-color: #ff5c61;
@@ -47,3 +91,29 @@ a:hover {
 .top-pad-30px {
 	padding-top: 30px;
 }
+
+.table-hover {
+	background-color: #ede7e3;
+}
+
+.fa-file-pdf-o {
+	padding-left: 20px;
+}
+
+tbody {
+	text-align: center;
+}
+
+th {
+	text-align: center;
+}
+
+
+
+
+
+
+
+
+
+

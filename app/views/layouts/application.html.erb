@@ -5,71 +5,66 @@
   <%= stylesheet_link_tag    "application", :media => "all" %>
   <%= javascript_include_tag "application" %>
 
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+
   <%= csrf_meta_tags %>
 </head>
 <body>
 
   <div id="wrapper">
     <!-- Navigation -->
-    <nav class="navbar navbar-fixed-top navbar-theme" role="navigation">
+    <nav class="navbar navbar-theme" role="navigation">
       <div class="navbar-header">
-        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#collapse-navbar">
             <span class="sr-only">Toggle navigation</span>
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
         </button>
-        <%= link_to "STITCH FIX", root_path, class: "navbar-brand" %>
+        <%= link_to root_path, class: "navbar-brand" do %>
+          <%= image_tag("https://d27bvhtwhzf6pr.cloudfront.net/assets/branding/logo-b-2bdbbe3a9e959a90e6ea37ece4b279cd.png") %> 
+        <% end %>
       </div>
       <!-- Top Menu Items -->
-      <ul class="nav navbar-right top-nav">
-        
-      </ul>
-      <!-- Sidebar Menu Items - These collapse to the responsive navigation menu on small screens -->
-      <div class="collapse navbar-collapse navbar-ex1-collapse">
-        <ul class="nav navbar-nav side-nav">
-           <li>
-            <%= link_to "javascript:;", data: { toggle: "collapse", target: "#group-items"} do  %>
-              <i class="fa fa-fw fa-arrows-v"></i> Items <i class="fa fa-fw fa-caret-down"></i>
+      <div class="collapse navbar-collapse" id="collapse-navbar">
+        <ul class="nav navbar-nav navbar-right">
+          <li>
+            <% if print_batch %>
+              <%= link_to "#", class: "share", onclick: "window.print();return false;" do %>
+                <i class="fa fa-file-pdf-o"></i> Print Me
+              <% end %>
             <% end %>
-            <ul class="collapse" id="group-items">
-              <li><%= link_to "All Items", items_path, class: "all-items" %></li>
-              <li><%= link_to "Sellable Items", sellable_path %></li>
-              <li><%= link_to "Clearaced Items", clearanced_path %></li>
+          </li>
+          <li class="dropdown">
+            <%= link_to "#", class: "dropdown-toggle", data: { toggle: "dropdown"}, role: "button", aria: { haspopup: "true", expanded: "false"} do %>
+              Clearance Tool <span class="caret"></span>
+            <% end %>
+            <ul class="dropdown-menu">
+              <li>
+                <%= link_to items_path, class: "all-items" do %>
+                  <i class="fa fa-list"></i> Items
+                <% end %>
+              </li>
+              <li>
+                <%= link_to root_path do %>
+                  <i class="fa fa-archive"></i> Clearance Batches
+                <% end %>
+              </li>
+              <li role="separator" class="divider"></li>
+              <li>
+                <%= link_to new_clearance_batch_path do %>
+                  <i class="fa fa-fw fa-edit"></i> Create a New Batch
+                <% end %>
+              </li>
             </ul>
           </li>
-          <li>
-            <%= link_to clearance_batches_path do %>
-              <i class="fa fa-archive"></i> Clearance Batches
-            <% end %>
-          </li>
-          <li>
-            <%= link_to new_clearance_batch_path do %>
-              <i class="fa fa-fw fa-edit"></i> Create a New Batch
-            <% end %>
-          </li>
-
         </ul>
-      </div>
-      <!-- /.navbar-collapse -->
-    </nav>
-    <div id="page-wrapper">
-
+      </div><!-- /.navbar-collapse -->
+    </nav><!-- /nav -->
+    <div class="container">
       <div class="container-fluid">
-          
-          <!-- <div class="flash-messages" style="display: none;"></div> -->
-
-          <%= yield %>
-      <!-- /.container-fluid -->
-      </div>
-
-    <!-- /#page-wrapper -->
+        <%= yield %>
+      </div><!-- /.container-fluid -->
     </div>
-
-  <!-- /#wrapper -->
-  </div>
+  </div><!-- /#wrapper -->
 </body>
 </html>
