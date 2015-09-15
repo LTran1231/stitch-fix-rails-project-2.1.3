@@ -27,6 +27,7 @@ var Items = (function(){
 				console.log(response);
 				$('#items').empty();
 				$('#items').append(response);
+				$('#search').val("");
 
 			}).fail(function(error){
 				console.log(error);

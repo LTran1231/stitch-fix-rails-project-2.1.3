@@ -24,7 +24,6 @@ class ItemsController < ApplicationController
 			@items = items.paginate(:page => params[:page]).order('clearance_batch_id ASC')
 			render partial: "items", layout: false
 		end
-
 	end
 
 	def edit
