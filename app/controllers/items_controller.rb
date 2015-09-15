@@ -1,5 +1,4 @@
 class ItemsController < ApplicationController
-	before_action :set_item, only: [:edit, :update]
 
 	def index
 		@items = Item.paginate(:page => params[:page]).order('clearance_batch_id ASC')
@@ -24,13 +23,6 @@ class ItemsController < ApplicationController
 			@items = items.paginate(:page => params[:page]).order('clearance_batch_id ASC')
 			render partial: "items", layout: false
 		end
-
-	end
-
-	def edit
-	end
-
-	def update
 	end
 
 	private
