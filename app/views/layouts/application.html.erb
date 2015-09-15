@@ -27,6 +27,13 @@
       <!-- Top Menu Items -->
       <div class="collapse navbar-collapse" id="collapse-navbar">
         <ul class="nav navbar-nav navbar-right">
+          <li>
+            <% if print_batch %>
+              <%= link_to "#", class: "share", onclick: "window.print();return false;" do %>
+                <i class="fa fa-file-pdf-o"></i> Print Me
+              <% end %>
+            <% end %>
+          </li>
           <li class="dropdown">
             <%= link_to "#", class: "dropdown-toggle", data: { toggle: "dropdown"}, role: "button", aria: { haspopup: "true", expanded: "false"} do %>
               Clearance Tool <span class="caret"></span>
@@ -37,12 +44,12 @@
                   <i class="fa fa-list"></i> Items
                 <% end %>
               </li>
-              <li role="separator" class="divider"></li>
               <li>
                 <%= link_to root_path do %>
                   <i class="fa fa-archive"></i> Clearance Batches
                 <% end %>
               </li>
+              <li role="separator" class="divider"></li>
               <li>
                 <%= link_to new_clearance_batch_path do %>
                   <i class="fa fa-fw fa-edit"></i> Create a New Batch
@@ -50,31 +57,7 @@
               </li>
             </ul>
           </li>
-        
-          
-          <li>
-            <% if print_batch %>
-            <%= link_to "#", class: "share", onclick: "window.print();return false;" do %>
-              <i class="fa fa-share-alt"></i>
-            <% end %>
-            <% end %>
-          </li>
         </ul>
-
-<!--         <ul class="nav navbar-nav navbar-right">
-                <li class="dropdown">
-                  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
-                  <ul class="dropdown-menu">
-                    <li><a href="#">Action</a></li>
-                    <li><a href="#">Another action</a></li>
-                    <li><a href="#">Something else here</a></li>
-                    <li role="separator" class="divider"></li>
-                    <li><a href="#">Separated link</a></li>
-                  </ul>
-                </li>
-              </ul> -->
-
-
       </div><!-- /.navbar-collapse -->
     </nav><!-- /nav -->
     <div class="container">

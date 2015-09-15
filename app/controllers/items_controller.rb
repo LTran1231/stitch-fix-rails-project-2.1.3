@@ -2,7 +2,7 @@ class ItemsController < ApplicationController
 	before_action :set_item, only: [:edit, :update]
 
 	def index
-		@items = Item.paginate(:page => params[:page]).order('id ASC')
+		@items = Item.paginate(:page => params[:page]).order('clearance_batch_id ASC')
 		if params[:page]
 		  render partial: "items", layout: false
 		else
@@ -21,7 +21,7 @@ class ItemsController < ApplicationController
 			flash.now[:alert] = "No result found for '#{query}'"
 			render partial: "shared/flash_messages", status: 400, layout: false
 		else
-			@items = items.paginate(:page => params[:page])
+			@items = items.paginate(:page => params[:page]).order('clearance_batch_id ASC')
 			render partial: "items", layout: false
 		end
 

@@ -11,7 +11,7 @@
 	  <td>
 	  	<% if item.clearance_batch_id %>
 		  	<%= link_to edit_clearance_batch_path(item.clearance_batch_id) do %>
-		  		<i class="fa fa-archive"></i>
+		  		<i class="fa fa-archive"></i> <%= item.clearance_batch_id %>
 		  	<% end %>
 	  	<% end %>
 	  </td>
