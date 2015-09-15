@@ -1,13 +1,14 @@
 var ClearanceBatch = (function(){
+
 	var getAll = (function(cssSelectorLink){
 		$(document).on('click', cssSelectorLink, function(event){
 			event.preventDefault();
 			var $target = $(event.target);
 			var url = $target.attr('href');
 
-			$.get(url).done(function(data){
+			$.get(url).done(function(response){
 				$('#batches').empty()
-				$('#batches').append(data);
+				$('#batches').append(response);
 			})
 
 		})
@@ -76,12 +77,34 @@ var ClearanceBatch = (function(){
 		})
 	})
 
+	var openModalConfirmAction = (function(OpenModal){
+		$(OpenModal).on('show.bs.modal', function(event){
+			var $target = $(event.relatedTarget);
+			var data = $target.data('action');
+			var modal = $(this);
+			var url = location.origin;
+			
+			modal.find('.modal-title').text("Clearance Batch "+data)
+			modal.find('.modal-body p').text("Are you sure you want to archive this batch? Once a clearance batch is archived, you are not allowed to edit this batch.");
+			modal.find('.modal-footer .submit').text("Archived");
+
+			$(modal).on('click', '.submit', function(){
+				$.get(url, { archived: data }).done(function(response){
+					routeTo(url);
+				})
+			})
+		})
+	})
+
+
 
 	return {
 		getAll: getAll,
 		clearancingItem: clearancingItem,
 		saveItemsToBatch: saveItemsToBatch,
 		removeItemFromBatch: removeItemFromBatch,
+		openModalConfirmAction: openModalConfirmAction,
 	}
 	
 })();
+

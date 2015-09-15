@@ -3,7 +3,11 @@ class ClearanceBatchesController < ApplicationController
 
   def index
     @clearance_batches  = ClearanceBatch.paginate(:page => params[:page])
-    if params[:page]
+    if params[:archived]
+      clearance_batch = ClearanceBatch.where(id: params[:archived]).first
+      clearance_batch = clearance_batch.update(status: "archived")
+      render :index, layout: false
+    elsif params[:page]
       render partial: "clearance_batches_table", layout: false
     else
       render :index
@@ -19,6 +23,11 @@ class ClearanceBatchesController < ApplicationController
   end
 
   def edit
+    if archived?(params[:id])
+      redirect_to clearance_batch_path
+    else
+      render :edit
+    end
     
   end
 

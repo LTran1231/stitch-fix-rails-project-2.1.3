@@ -14,20 +14,31 @@
           <td><%= link_to "Clearance Batch #{clearance_batch.id}", edit_clearance_batch_path(clearance_batch) %></td>
           <td><%= l(clearance_batch.created_at, format: :short) %></td>
           <td><%= clearance_batch.items.count %></td>
-          <td>
-            <%= link_to clearance_batch_path(clearance_batch), class: "remove_item_or_batch" do %>
-              <i class="fa fa-trash-o"></i>
-            <% end %> 
-            
+          <td class="batch-option-icons">
             <%= link_to clearance_batch_path(clearance_batch) do %>
               <i class="fa fa-file-pdf-o"></i>
             <% end %>
+            <% if clearance_batch.status == "archived" %>
+                <i class="fa fa-check"></i>
+            <% else %>
+              <%= link_to "#", class: "archive-batch", data: { toggle: "modal", target: ".confirmModal", action: "#{clearance_batch.id}" } do %>
+                <i class="fa fa-check"></i>
+              <% end %> 
+
+              <%= link_to clearance_batch_path(clearance_batch), class: "remove_item_or_batch" do %>
+                <i class="fa fa-trash-o"></i>
+              <% end %> 
+
+            <% end %>        
           </td>
         </tr>
       <%- end -%>
     <% end %>
+
   </tbody>
 </table>
+<%= render "confirm_before_archive_modal" %>
 <div class="items_pagination text-center">
   <%= will_paginate @items %>
 </div>
+

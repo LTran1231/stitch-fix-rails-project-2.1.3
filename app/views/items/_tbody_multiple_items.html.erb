@@ -8,10 +8,14 @@
 	  <td><%= item.style.retail_price %></td>
 	  <td><%= item.style.wholesale_price %></td>
 	  <td><%= item.price_sold %></td>
+
 	  <td>
 	  	<% if item.clearance_batch_id %>
-		  	<%= link_to edit_clearance_batch_path(item.clearance_batch_id) do %>
-		  		<i class="fa fa-archive"></i> <%= item.clearance_batch_id %>
+	  		<% if archived?(item.clearance_batch_id) %>
+			  	<i class="fa fa-check"></i>
+		  	<% end %>
+	  		<%= link_to edit_clearance_batch_path(item.clearance_batch_id) do %>
+	  			<i class="fa fa-archive"></i> <%= item.clearance_batch_id %>
 		  	<% end %>
 	  	<% end %>
 	  </td>
