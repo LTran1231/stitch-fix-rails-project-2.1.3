@@ -1,12 +1,16 @@
 <div class="clearance-batch-wrapper">
-	<h2 class="text-center">Clearance Batches <%= @clearance_batch.id %></h2>
-	<%= link_to clearance_batch_path(@clearance_batch), class: "remove_item_or_batch" do -%>
-	  <i class="fa fa-trash-o"></i>
-	<% end %>
+	<div class="row">
+		<h2 class="col-md-8 text-right">Clearance Batch <%= @clearance_batch.id %></h2>
+		<h2 class="col-md-4 text-right">
+			<%= link_to @clearance_batch do %>
+				<i class="fa fa-file-pdf-o fa-fw-2x"></i>
+			<% end %>
+		</h2>
+	</div>
 
 	<div class="flash-messages displayNone"></div>
 	<div class="col-sm-12 text-center">
-	  <div class="searchbar">
+	  <div class="searchbar find_item_id_n_add">
 	    <%= form_tag @clearance_batch, method: :put do %>
 	      <%= render "search_form" %>
 	    <% end %>

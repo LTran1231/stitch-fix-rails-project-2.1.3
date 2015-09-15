@@ -26,31 +26,31 @@
       </div>
       <!-- Top Menu Items -->
       <ul class="nav navbar-right top-nav">
-        
+        <li>
+          <%= link_to items_path, class: "all-items" do %>
+            <i class="fa fa-list"></i> Items
+          <% end %>
+        </li>
+        <li>
+          <%= link_to root_path do %>
+            <i class="fa fa-archive"></i> Clearance Batches
+          <% end %>
+        </li>
+        <li>
+          <%= link_to new_clearance_batch_path do %>
+            <i class="fa fa-fw fa-edit"></i> Create a New Batch
+          <% end %>
+        </li>
+        <li>
+          <%= link_to "#", class: "share", onclick: "window.print();return false;" do %>
+            <i class="fa fa-share-alt"></i>
+          <% end %>
+        </li>
       </ul>
       <!-- Sidebar Menu Items - These collapse to the responsive navigation menu on small screens -->
       <div class="collapse navbar-collapse navbar-ex1-collapse">
         <ul class="nav navbar-nav side-nav">
-          <li>
-            <%= link_to items_path, class: "all-items" do %>
-              <i class="fa fa-list"></i> Items
-            <% end %>
-          </li>
-          <li>
-            <%= link_to root_path do %>
-              <i class="fa fa-archive"></i> Clearance Batches
-            <% end %>
-          </li>
-          <li>
-            <%= link_to new_clearance_batch_path do %>
-              <i class="fa fa-fw fa-edit"></i> Create a New Batch
-            <% end %>
-          </li>
-          <li>
-            <%= link_to "#", class: "share", onclick: "window.print();return false;" do %>
-              <i class="fa fa-share-alt"></i>
-            <% end %>
-          </li>
+          
         </ul>
       </div>
       <!-- /.navbar-collapse -->

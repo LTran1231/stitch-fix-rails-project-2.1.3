@@ -16,7 +16,6 @@ class ClearanceBatchesController < ApplicationController
     
   end
 
-
   def potential_clearance_item
     clearancing_status = ClearancingService.process_item(params[:itemID])
     if clearancing_status.item_id_to_clearance
@@ -32,12 +31,10 @@ class ClearanceBatchesController < ApplicationController
   def create
     clearancing_status = ClearancingService.saving_items(params[:itemids])
     clearance_batch = clearancing_status.clearance_batch
-    if clearance_batch.persisted?
-      flash.now[:notice] = "#{clearance_batch.items.count} items clearanced in batch #{clearance_batch.id}"
-    else
+    if !clearance_batch.persisted?
       flash.now[:alert] = "No new clearance batch was added"
     end
-      render "shared/_flash_messages", layout: false
+    render "shared/_flash_messages", layout: false
   end
 
   def update
@@ -60,6 +57,7 @@ class ClearanceBatchesController < ApplicationController
   end
 
   def destroy
+
     @clearance_batch = ClearanceBatch.find(params[:id])
     item_id = params[:item_id].to_i
     if item_id.is_a?(Integer) && item_id != 0

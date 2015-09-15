@@ -11,7 +11,7 @@ var ClearanceBatch = (function(){
 			var $target = $(event.target);
 			var url = $target.attr('action');
 			var data = $target.serialize()+"&add_item=add_item";
-			$.get(url, data).done(function(data){
+			$.post(url, data).done(function(data){
 				$('.save_items_to_new_batch').show();
 				$('.displayItemWrapper tbody').append(data);
 				$('#itemID').val('');
@@ -53,7 +53,7 @@ var ClearanceBatch = (function(){
 			event.preventDefault();
 			var $target = $(this);
 			var url = $target.attr('href');
-			var type = "DELETE"
+			var type = "DELETE";
 			// var batch_id = $target.closest('.clearance-batch-wrapper').find('h2').html().split(" ").pop();
 			var item_id = $target.closest('tr').find('td').eq(0).html();
 
@@ -62,7 +62,8 @@ var ClearanceBatch = (function(){
 				type: type,
 				dataType: "JSON",
 				data: { item_id: item_id }
-			}).done(function(data){
+			})
+			.done(function(data){
 				$target.closest('tr').remove();
 			})
 		})
