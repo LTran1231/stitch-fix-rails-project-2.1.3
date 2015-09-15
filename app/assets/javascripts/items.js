@@ -8,8 +8,8 @@ var Items = (function(){
 
 			$.get(url).done(function(data){
 				console.log(data);
-				$('.container-fluid').empty()
-				$('.container-fluid').append(data);
+				$('#items').empty()
+				$('#items').append(data);
 			})
 
 		})

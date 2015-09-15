@@ -23,7 +23,6 @@
             <span class="icon-bar"></span>
         </button>
         <%= link_to root_path, class: "navbar-brand" do %>
-  
           <%= image_tag("https://d27bvhtwhzf6pr.cloudfront.net/assets/branding/logo-b-2bdbbe3a9e959a90e6ea37ece4b279cd.png") %> 
         <% end %>
       </div>
@@ -46,8 +45,10 @@
             <% end %>
           </li>
           <li>
+            <% if print_batch %>
             <%= link_to "#", class: "share", onclick: "window.print();return false;" do %>
               <i class="fa fa-share-alt"></i>
+            <% end %>
             <% end %>
           </li>
         </ul>

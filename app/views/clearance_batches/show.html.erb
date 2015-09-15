@@ -12,7 +12,8 @@
 		<table id="itemsTable" class="table table-hover">
 		  <thead>
 		  	<tr>
-		  	  <th>Item No.</th>
+		  		<th>No.</th>
+		  	  <th>Item ID</th>
 		  	  <th>Style Name</th>
 		  	  <th>Color</th>
 		  	  <th>Size</th>
@@ -23,6 +24,7 @@
 		  	<% @items.each_with_index do |item, index| %>
 		  		<tr>
 		  		  <td><%= index+1 %></td>
+		  		  <td><%= item.id %></td>
 		  		  <td><%= item.style.name %></td>
 		  		  <td><%= item.color %></td>
 		  		  <td><%= item.size %></td>
@@ -30,6 +32,7 @@
 		  	<% end %>
 		  </tbody>
 		  <tr>
+		  	<td></td>
 		  	<td></td>
 		  	<td></td>
 		  	<td></td>

@@ -1,8 +1,18 @@
-var routeTo = (function(route){
-	window.location.href = route;
-});
-
 var ClearanceBatch = (function(){
+	var getAll = (function(cssSelectorLink){
+		$(document).on('click', cssSelectorLink, function(event){
+			event.preventDefault();
+			var $target = $(event.target);
+			var url = $target.attr('href');
+
+			$.get(url).done(function(data){
+				console.log(data);
+				$('#batches').empty()
+				$('#batches').append(data);
+			})
+
+		})
+	})
 
 	var clearancingItem = (function(cssSelectorForm){
 		$(cssSelectorForm).on('submit', function(event){
@@ -71,10 +81,10 @@ var ClearanceBatch = (function(){
 
 
 	return {
+		getAll: getAll,
 		clearancingItem: clearancingItem,
 		saveItemsToBatch: saveItemsToBatch,
 		removeItemFromBatch: removeItemFromBatch,
-		// deleteBatch: deleteBatch
 	}
 	
 })();

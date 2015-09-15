@@ -1,25 +1,28 @@
 class ItemsController < ApplicationController
 	before_action :set_item, only: [:edit, :update]
-	layout :false, only: [:search, :index]
 
 	def index
 		@items = Item.paginate(:page => params[:page]).order('id ASC')
-
+		if params[:page]
+		  render partial: "items", layout: false
+		else
+		  render :index
+		end
 	end
 
 	def search
 		query = params[:search]
-		@items = Item.search(query)
+		items = Item.search(query)
 		styles = Style.search(query)
 		styles.each do |style|
-			@items.concat(style.items)
+			items.concat(style.items)
 		end
-		
-		if query.blank? || @items.empty?
+		if query.blank? || items.empty?
 			flash.now[:alert] = "No result found for '#{query}'"
-			render partial: "shared/flash_messages", status: 400
+			render partial: "shared/flash_messages", status: 400, layout: false
 		else
-			render partial: "items"
+			@items = items.paginate(:page => params[:page])
+			render partial: "items", layout: false
 		end
 
 	end

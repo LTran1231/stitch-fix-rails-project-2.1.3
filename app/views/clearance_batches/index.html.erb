@@ -1,35 +1,6 @@
+
 <h2 class="text-center">Clearance Batches</h2>
 <div class="flash-messages displayNone"></div>
-<table class="table table-hover clearance_batches">
-  <thead>
-    <tr>
-      <th></th>
-      <th>Date clearanced</th>
-      <th>Number of items clearanced</th>
-      <th></th>
-    </tr>
-  </thead>
-  <tbody>
-    <% if @clearance_batches %>
-      <%- @clearance_batches.each do |clearance_batch| -%>
-        <tr>
-          <td><%= link_to "Clearance Batch #{clearance_batch.id}", edit_clearance_batch_path(clearance_batch) %></td>
-          <td><%= l(clearance_batch.created_at, format: :short) %></td>
-          <td><%= clearance_batch.items.count %></td>
-          <td>
-            <%= link_to clearance_batch_path(clearance_batch), class: "remove_item_or_batch" do %>
-              <i class="fa fa-trash-o"></i>
-            <% end %> 
-            
-            <%= link_to clearance_batch_path(clearance_batch) do %>
-              <i class="fa fa-file-pdf-o"></i>
-            <% end %>
-          </td>
-        </tr>
-      <%- end -%>
-    <% end %>
-  </tbody>
-</table>
-<div class="items_pagination text-center">
-  <%= will_paginate @items %>
+<div id="batches">
+  <%= render "clearance_batches_table" %>
 </div>

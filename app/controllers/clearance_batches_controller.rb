@@ -3,10 +3,16 @@ class ClearanceBatchesController < ApplicationController
 
   def index
     @clearance_batches  = ClearanceBatch.paginate(:page => params[:page])
+    if params[:page]
+      render partial: "clearance_batches_table", layout: false
+    else
+      render :index
+    end
   end
 
   def show 
     @total_amount_sold = @items.inject(0) { |sum, item| sum + item.price_sold }
+    @print = true
   end
 
   def new
