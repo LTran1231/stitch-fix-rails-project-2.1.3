@@ -28,17 +28,26 @@ body {
 
 .nav a:hover {
 	color: #9DD5CC;
-	background-color: #e9e2dc;
+	background-color: #eeeeee;
 }
 
 .nav li:focus {
 	color: #9DD5CC;
-	background-color: #e9e2dc;
+	background-color: #eeeeee;
 }
 
 .navbar-brand {
 	font-size: 20px;
   line-height: 22px;
+}
+
+.dropdown-menu li a:hover {
+	color: #9DD5CC;
+	background-color: #eeeeee;
+}
+
+.dropdown-menu {
+	background-color: #ede7e3;
 }
 
 a {
