@@ -15,7 +15,6 @@ body {
     background-color: #f7f5f2;
 }
 
-
 .navbar-theme {
 	background-color: #ede7e3;
 }
@@ -32,7 +31,7 @@ body {
 	background-color: #e9e2dc;
 }
 
-.nav a:focus {
+.nav li:focus {
 	color: #9DD5CC;
 	background-color: #e9e2dc;
 }
@@ -67,8 +66,6 @@ h1, .h1, h2, .h2, h3, .h3 {
 	display: none;
 }
 
-
-
 .btn {
 	color: white;
 	background-color: #ff5c61;
@@ -83,6 +80,14 @@ h1, .h1, h2, .h2, h3, .h3 {
 
 .top-pad-30px {
 	padding-top: 30px;
+}
+
+.table-hover {
+	background-color: #ede7e3;
+}
+
+.fa-file-pdf-o {
+	padding-left: 20px;
 }
 
 

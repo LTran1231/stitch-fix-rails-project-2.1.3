@@ -19,6 +19,10 @@
           <td>
             <%= link_to clearance_batch_path(clearance_batch), class: "remove_item_or_batch" do %>
               <i class="fa fa-trash-o"></i>
+            <% end %> 
+            
+            <%= link_to clearance_batch_path(clearance_batch) do %>
+              <i class="fa fa-file-pdf-o"></i>
             <% end %>
           </td>
         </tr>
