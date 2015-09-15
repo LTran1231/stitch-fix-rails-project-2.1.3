@@ -12,7 +12,6 @@
 //
 //= require jquery
 //= require jquery_ujs
-
 //= require bootstrap
 //= require_tree .
 
@@ -25,7 +24,6 @@ $(function () {
   ClearanceBatch.saveItemsToBatch('.save_items_to_new_batch form');
   ClearanceBatch.removeItemFromBatch('.container-fluid');
 
-  // Items.getAll('.all-items');
   Items.getAll('#items th a, #items .pagination a');
   Items.search('.items-search form');
 

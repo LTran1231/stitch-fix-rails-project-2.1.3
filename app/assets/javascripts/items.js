@@ -23,14 +23,11 @@ var Items = (function(){
 			var data = $target.serialize();
 
 			$.get(url, data).done(function(response){
-
-				console.log(response);
 				$('#items').empty();
 				$('#items').append(response);
 				$('#search').val("");
 
 			}).fail(function(error){
-				console.log(error);
 				$('.flash-messages').empty();
 				$('.flash-messages').append(error.responseText).show();
 			})

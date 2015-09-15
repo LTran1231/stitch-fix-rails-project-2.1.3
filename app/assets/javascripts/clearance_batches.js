@@ -6,7 +6,6 @@ var ClearanceBatch = (function(){
 			var url = $target.attr('href');
 
 			$.get(url).done(function(data){
-				console.log(data);
 				$('#batches').empty()
 				$('#batches').append(data);
 			})
@@ -46,7 +45,6 @@ var ClearanceBatch = (function(){
 			var data = $target.serialize()+"&itemids="+itemids;
 
 			$.post(url, data).done(function(data){
-				console.log(data);
 				routeTo(location.origin);
 				$('.flash-messages').empty();
 				$('.flash-messages').append(data).show();
@@ -64,7 +62,6 @@ var ClearanceBatch = (function(){
 			var $target = $(this);
 			var url = $target.attr('href');
 			var type = "DELETE";
-			// var batch_id = $target.closest('.clearance-batch-wrapper').find('h2').html().split(" ").pop();
 			var item_id = $target.closest('tr').find('td').eq(0).html();
 
 			$.ajax({
