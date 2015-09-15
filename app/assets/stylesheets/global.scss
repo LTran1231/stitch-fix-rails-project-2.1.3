@@ -1,9 +1,30 @@
+body {
+    height: 100%;
+    background-color: #f7f5f2;
+    font-family: "BrandonText-Regular", sans-serif;
+    color: #847c77;
+}
+
+#wrapper {
+    padding-left: 0;
+}
+
+#page-wrapper {
+    width: 100%;
+    padding: 0;
+    background-color: #f7f5f2;
+}
+
+
 .navbar-theme {
 	background-color: #ede7e3;
 }
 
-a {
-	color: #6A615F;
+.nav a {
+	text-transform: uppercase;
+	font-family: "BrandonText-Regular", sans-serif;
+	font-size: 14px;
+	letter-spacing: 1.5px;
 }
 
 .nav a:hover {
@@ -14,6 +35,20 @@ a {
 .nav a:focus {
 	color: #9DD5CC;
 	background-color: #e9e2dc;
+}
+
+.navbar-brand {
+	font-size: 20px;
+  line-height: 22px;
+}
+
+a {
+	color: #6A615F;
+}
+
+a:hover {
+	color: #9DD5CC;
+	text-decoration: none;
 }
 
 .table > thead > tr > th {
@@ -32,10 +67,7 @@ h1, .h1, h2, .h2, h3, .h3 {
 	display: none;
 }
 
-a:hover {
-	color: #9DD5CC;
-	text-decoration: none;
-}
+
 
 .btn {
 	color: white;

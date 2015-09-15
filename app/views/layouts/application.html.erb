@@ -14,54 +14,49 @@
 
   <div id="wrapper">
     <!-- Navigation -->
-    <nav class="navbar navbar-fixed-top navbar-theme" role="navigation">
+    <nav class="navbar navbar-theme" role="navigation">
       <div class="navbar-header">
-        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#collapse-navbar">
             <span class="sr-only">Toggle navigation</span>
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
         </button>
-        <%= link_to "STITCH FIX", root_path, class: "navbar-brand" %>
+        <%= link_to root_path, class: "navbar-brand" do %>
+  
+          <%= image_tag("https://d27bvhtwhzf6pr.cloudfront.net/assets/branding/logo-b-2bdbbe3a9e959a90e6ea37ece4b279cd.png") %> 
+        <% end %>
       </div>
       <!-- Top Menu Items -->
-      <ul class="nav navbar-right top-nav">
-        <li>
-          <%= link_to items_path, class: "all-items" do %>
-            <i class="fa fa-list"></i> Items
-          <% end %>
-        </li>
-        <li>
-          <%= link_to root_path do %>
-            <i class="fa fa-archive"></i> Clearance Batches
-          <% end %>
-        </li>
-        <li>
-          <%= link_to new_clearance_batch_path do %>
-            <i class="fa fa-fw fa-edit"></i> Create a New Batch
-          <% end %>
-        </li>
-        <li>
-          <%= link_to "#", class: "share", onclick: "window.print();return false;" do %>
-            <i class="fa fa-share-alt"></i>
-          <% end %>
-        </li>
-      </ul>
-      <!-- Sidebar Menu Items - These collapse to the responsive navigation menu on small screens -->
-      <div class="collapse navbar-collapse navbar-ex1-collapse">
-        <ul class="nav navbar-nav side-nav">
-          
+      <div class="collapse navbar-collapse" id="collapse-navbar">
+        <ul class="nav navbar-nav navbar-right">
+          <li>
+            <%= link_to items_path, class: "all-items" do %>
+              <i class="fa fa-list"></i> Items
+            <% end %>
+          </li>
+          <li>
+            <%= link_to root_path do %>
+              <i class="fa fa-archive"></i> Clearance Batches
+            <% end %>
+          </li>
+          <li>
+            <%= link_to new_clearance_batch_path do %>
+              <i class="fa fa-fw fa-edit"></i> Create a New Batch
+            <% end %>
+          </li>
+          <li>
+            <%= link_to "#", class: "share", onclick: "window.print();return false;" do %>
+              <i class="fa fa-share-alt"></i>
+            <% end %>
+          </li>
         </ul>
       </div>
       <!-- /.navbar-collapse -->
     </nav>
-    <div id="page-wrapper">
-
+    <div class="container">
       <div class="container-fluid">
-          
-          <!-- <div class="flash-messages" style="display: none;"></div> -->
-
-          <%= yield %>
+        <%= yield %>
       <!-- /.container-fluid -->
       </div>
 
