@@ -9,18 +9,18 @@ Stitch Fix Clearance tool is created to help warehouse personnel process and org
 Items 
 * User can search for items by item id, status, style, style name, or by batch id
 * User can access the clearance batch the item belongs to
-* User can view all Items, items by status, or by style
+* User can view all Items, items by status or style
 
 Clearance Batches
 * User can view all existing clearance batches 
 * User can create a new clearance batch
-	** add item by item id number
+** add item by item id number
 * User can edit created batches
-	** add new item to current batch
-	** remove items from the current batch
+** add new item to current batch
+** remove items from the current batch
 * User can delete an existing batch
 * User can view the items in a batch in a pdf format that is prepared for vendor
-	** it includes items and the batch total amount
+** it includes items and the batch total amount
 
 ## Future - Clearance Tool V.2.0
 
@@ -30,7 +30,7 @@ Items
 
 Clearance Batches
 * As a user, I would like to be able to archive completed batches
-	** user cannot edit or delete last month batches 
+** user cannot edit or delete last month batches 
 * As a user, I would like to be able to allow vendor to have access to retrieve their old reports for their own convenience
 * As a user, I would like to be able to search batches by the vendor's name
 * As a user, I would like to be able to create custom batch reports with custom date ranges
