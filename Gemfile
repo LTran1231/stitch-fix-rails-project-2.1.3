@@ -9,6 +9,8 @@ gem "bootstrap-sass"
 gem "awesome_print"
 gem "font-awesome-rails"
 gem 'will_paginate'
+gem 'pg'
+
 
 group :production do
   gem 'thin'
@@ -17,7 +19,6 @@ end
 
 
 group :test, :development do
-	gem 'sqlite3'
 	gem 'pry-byebug'
   gem "rspec-rails"
   gem "factory_girl_rails"

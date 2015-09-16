@@ -1,7 +1,7 @@
 class ItemsController < ApplicationController
 
 	def index
-		@items = Item.paginate(:page => params[:page]).order('clearance_batch_id ASC')
+		@items = Item.paginate(:page => params[:page]).order('id ASC')
 		if params[:page]
 		  render partial: "items", layout: false
 		else
@@ -11,16 +11,17 @@ class ItemsController < ApplicationController
 
 	def search
 		query = params[:search]
-		items = Item.search(query)
-		styles = Style.search(query)
-		styles.each do |style|
-			items.concat(style.items)
+		results = []
+		results.concat(Item.search(query))
+		search_by_styles = Style.search(query)
+		search_by_styles.each do |style|
+			results.concat(style.items)
 		end
-		if query.blank? || items.empty?
+		if query.blank? || results.empty?
 			flash.now[:alert] = "No result found for '#{query}'"
 			render partial: "shared/flash_messages", status: 400, layout: false
 		else
-			@items = items.paginate(:page => params[:page]).order('clearance_batch_id ASC')
+			@items = results.paginate(:page => params[:page])
 			render partial: "items", layout: false
 		end
 	end

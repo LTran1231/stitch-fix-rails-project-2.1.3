@@ -3,7 +3,7 @@ class Style < ActiveRecord::Base
   has_many :items
 
   def self.search(query)
-		where("name LIKE? OR type LIKE?", "%#{query}%", "%#{query}%")
+		where("name ILIKE '%#{query}%' OR type ILIKE '%#{query}%'")
   end
 
 end

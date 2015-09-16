@@ -1,6 +1,0 @@
-# STITCH FIX
-
-## Desicription
-
-
-

@@ -21,7 +21,11 @@ class Item < ActiveRecord::Base
   end
 
   def self.search(query)
-    where("status LIKE? OR clearance_batch_id LIKE? OR id LIKE?", "%#{query}%", "#{query}", "#{query}")
+    if query.to_i.is_a?(Integer) && query.to_i  > 0
+      where("clearance_batch_id='#{query}' or id='#{query}'")
+    else
+      where("status ILike '%#{query}%'")
+    end
   end
 
   private
