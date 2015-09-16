@@ -1,4 +1,4 @@
-/Users/LTran/.rbenv/versions/2.2.2/bin/ruby -r ./siteconf20150908-34246-1k3iljt.rb extconf.rb
+/Users/LTran/.rbenv/versions/2.2.2/bin/ruby -r ./siteconf20150915-12640-13yqrb6.rb extconf.rb
 checking for ffi.h... no
 checking for ffi.h in /usr/local/include,/usr/include/ffi... yes
 checking for ffi_call() in -lffi... yes
@@ -53,4 +53,4 @@ compiling Variadic.c
 linking shared-object ffi_c.bundle
 
 make "DESTDIR=" install
-/usr/bin/install -c -m 0755 ffi_c.bundle ./.gem.20150908-34246-dz9jai
+/usr/bin/install -c -m 0755 ffi_c.bundle ./.gem.20150915-12640-i4v3m7

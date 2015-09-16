@@ -13,6 +13,9 @@
 
 ActiveRecord::Schema.define(version: 20150915204050) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "clearance_batches", force: :cascade do |t|
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -31,7 +34,7 @@ ActiveRecord::Schema.define(version: 20150915204050) do
     t.integer  "clearance_batch_id"
   end
 
-  add_index "items", ["clearance_batch_id"], name: "index_items_on_clearance_batch_id"
+  add_index "items", ["clearance_batch_id"], name: "index_items_on_clearance_batch_id", using: :btree
 
   create_table "styles", force: :cascade do |t|
     t.decimal  "wholesale_price"
