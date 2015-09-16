@@ -1,10 +1,9 @@
-<table id="itemsTable" class="table table-hover">
+<table id="itemsTable" class="table">
 	<thead><%= render "item_thead" %></thead>
 	<tbody>
 		<%= render "tbody_multiple_items" %>
 	</tbody>
 </table>
-
 <div class="items_pagination text-center">
 	<%= will_paginate @items %>
 </div>

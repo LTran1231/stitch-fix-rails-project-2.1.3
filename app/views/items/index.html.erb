@@ -10,7 +10,8 @@
 </div>
 
 <div id="items">
-	<%= render 'items' %>
-	
+	<% if @items %>
+		<%= render 'items' %>
+	<% end %>
 </div> 
 
