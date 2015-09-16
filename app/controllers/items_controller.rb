@@ -1,7 +1,7 @@
 class ItemsController < ApplicationController
 
 	def index
-		@items = Item.paginate(:page => params[:page]).order('clearance_batch_id ASC')
+		@items = Item.paginate(:page => params[:page]).order('id ASC')
 		if params[:page]
 		  render partial: "items", layout: false
 		else

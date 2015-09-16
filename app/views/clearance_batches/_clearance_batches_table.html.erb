@@ -1,14 +1,14 @@
-<table class="table table-hover clearance_batches">
-  <thead>
-    <tr>
-      <th></th>
-      <th>Date clearanced</th>
-      <th>Number of items clearanced</th>
-      <th></th>
-    </tr>
-  </thead>
-  <tbody>
-    <% if @clearance_batches %>
+<% if @clearance_batches %>
+  <table class="table clearance_batches">
+    <thead>
+      <tr>
+        <th></th>
+        <th>Date clearanced</th>
+        <th>Number of items clearanced</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
       <%- @clearance_batches.each do |clearance_batch| -%>
         <tr>
           <td><%= link_to "Clearance Batch #{clearance_batch.id}", edit_clearance_batch_path(clearance_batch) %></td>
@@ -33,12 +33,11 @@
           </td>
         </tr>
       <%- end -%>
-    <% end %>
-
-  </tbody>
-</table>
-<%= render "confirm_before_archive_modal" %>
-<div class="items_pagination text-center">
-  <%= will_paginate @items %>
-</div>
+    </tbody>
+  </table>
+  <%= render "confirm_before_archive_modal" %>
+  <div class="items_pagination text-center">
+    <%= will_paginate @items %>
+  </div>
+<% end %>
 
