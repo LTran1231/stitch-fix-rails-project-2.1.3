@@ -16,16 +16,16 @@
           <td><%= clearance_batch.items.count %></td>
           <td class="batch-option-icons">
             <%= link_to clearance_batch_path(clearance_batch) do %>
-              <i class="fa fa-file-pdf-o"></i>
+              <i class="fa fa-file-pdf-o" title="Print"></i>
             <% end %>
-            <% if clearance_batch.status == "archived" %>
-                <i class="fa fa-check"></i>
+            <% if archived?(clearance_batch.id)%>
+                <i class="fa fa-check" title="Archived"></i>
             <% else %>
-              <%= link_to "#", class: "archive-batch", data: { toggle: "modal", target: ".confirmModal", action: "#{clearance_batch.id}" } do %>
+              <%= link_to "#", class: "archive-batch", title: "Archive", data: { toggle: "modal", target: ".confirmModal", action: "#{clearance_batch.id}" } do %>
                 <i class="fa fa-check"></i>
               <% end %> 
 
-              <%= link_to clearance_batch_path(clearance_batch), class: "remove_item_or_batch" do %>
+              <%= link_to clearance_batch_path(clearance_batch), title: "Delete",class: "remove_item_or_batch" do %>
                 <i class="fa fa-trash-o"></i>
               <% end %> 
 

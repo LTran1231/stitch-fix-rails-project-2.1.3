@@ -51,3 +51,5 @@ Style.create(name: "Blue Camo Print Boyfriend Jeans",
              type: "Pants",    wholesale_price: 5, retail_price: 70).tap { |style|
   make_items(style,"Navy")
 }
+
+
