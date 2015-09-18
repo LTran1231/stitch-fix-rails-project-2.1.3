@@ -6,9 +6,11 @@ var ClearanceBatch = (function(){
 			var $target = $(event.target);
 			var url = $target.attr('href');
 
+
 			$.get(url).done(function(response){
 				$('#batches').empty()
 				$('#batches').append(response);
+
 			})
 
 		})
@@ -77,8 +79,17 @@ var ClearanceBatch = (function(){
 		})
 	})
 
+	var confirmedSendData = (function(modal, url, data){
+		$(modal).on('click', '.submit', function(){
+			$.get(url, { archived: data }).done(function(response){
+				routeTo(url);
+			})
+		})
+	})
+
 	var openModalConfirmAction = (function(OpenModal){
-		$(OpenModal).on('show.bs.modal', function(event){
+		$(document).on('show.bs.modal', OpenModal, function(event){
+			console.log("hi")
 			var $target = $(event.relatedTarget);
 			var data = $target.data('action');
 			var modal = $(this);
@@ -88,11 +99,8 @@ var ClearanceBatch = (function(){
 			modal.find('.modal-body p').text("Are you sure you want to archive this batch? Once a clearance batch is archived, you are not allowed to edit this batch.");
 			modal.find('.modal-footer .submit').text("Archived");
 
-			$(modal).on('click', '.submit', function(){
-				$.get(url, { archived: data }).done(function(response){
-					routeTo(url);
-				})
-			})
+			confirmedSendData(modal, url, data);
+
 		})
 	})
 
