@@ -53,3 +53,33 @@ Style.create(name: "Blue Camo Print Boyfriend Jeans",
 }
 
 
+1.upto(100) do |i|
+  clearance_batch = ClearanceBatch.new
+  start = i
+  final = i + 4
+  start.upto(final) do |id|
+    item = Item.find(id)
+    clearance_batch.items << item
+  end
+  i += 5
+  clearance_batch.save!
+end
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -70,7 +70,7 @@ class ClearanceBatchesController < ApplicationController
   end
 
   def destroy
-
+    p "8" * 100
     @clearance_batch = ClearanceBatch.find(params[:id])
     item_id = params[:item_id].to_i
     if item_id.is_a?(Integer) && item_id != 0
@@ -78,10 +78,13 @@ class ClearanceBatchesController < ApplicationController
       item.reverse_clearanced!
       render :nothing => true, :status => 204
     else
-      @clearance_batch.items.each do |item|
-        item.reverse_clearanced!
+      p params
+      ClearanceBatch.transaction do 
+        @clearance_batch.items.each do |item|
+          item.reverse_clearanced!
+        end
+        @clearance_batch.destroy!
       end
-      @clearance_batch.destroy!
       render :nothing => true, :status => 204
     end
 
