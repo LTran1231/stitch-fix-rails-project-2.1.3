@@ -70,7 +70,6 @@ class ClearanceBatchesController < ApplicationController
   end
 
   def destroy
-    p "8" * 100
     @clearance_batch = ClearanceBatch.find(params[:id])
     item_id = params[:item_id].to_i
     if item_id.is_a?(Integer) && item_id != 0

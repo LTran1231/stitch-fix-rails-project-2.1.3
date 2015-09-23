@@ -21,7 +21,8 @@ $(function () {
   ClearanceBatch.clearancingItem('.potential-clearance-item-search form');
   ClearanceBatch.clearancingItem('.find_item_id_n_add form');
   ClearanceBatch.saveItemsToBatch('.save_items_to_new_batch form');
-  ClearanceBatch.deleteBatchOrItemFromBatch('.remove_item_or_batch', '.confirmModal');
+  ClearanceBatch.deleteBatch('.remove_batch', '.confirmModal');
+  ClearanceBatch.deleteItemFromBatch('.remove_item')
   ClearanceBatch.archivedBatch('.archive-batch', '.confirmModal');
 
   Items.getAll('#items th a, #items .pagination a');

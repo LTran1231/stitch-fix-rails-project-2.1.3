@@ -25,7 +25,7 @@
                 <i class="fa fa-check"></i>
               <% end %> 
 
-              <%= link_to "#delete", title: "Delete", class: "remove_item_or_batch", data: { toggle: "modal", action: "#{clearance_batch_path(clearance_batch)}", batch_id: "#{clearance_batch.id}", target: ".confirmModal" } do %>
+              <%= link_to "#delete", title: "Delete", class: "remove_batch", data: { toggle: "modal", action: "#{clearance_batch_path(clearance_batch)}", batch_id: "#{clearance_batch.id}", target: ".confirmModal" } do %>
                 <i class="fa fa-trash-o"></i>
               <% end %> 
             <% end %>        

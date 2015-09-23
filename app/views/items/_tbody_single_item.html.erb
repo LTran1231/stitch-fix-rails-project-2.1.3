@@ -9,7 +9,7 @@
   <td><%= item.price_sold %></td>
   <% if item.status == "clearanced" %>
     <td>
-      <%= link_to clearance_batch_path, class: "remove_item_or_batch" do %>
+      <%= link_to clearance_batch_path, class: "remove_item" do %>
         <i class="fa fa-trash-o"></i>
       <% end %>
     </td>

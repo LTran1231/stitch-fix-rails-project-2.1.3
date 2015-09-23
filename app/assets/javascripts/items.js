@@ -7,7 +7,6 @@ var Items = (function(){
 			var url = $target.attr('href');
 
 			$.get(url).done(function(data){
-				console.log(data);
 				$('#items').empty()
 				$('#items').append(data);
 			})
