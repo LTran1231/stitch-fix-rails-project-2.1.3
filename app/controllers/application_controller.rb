@@ -13,4 +13,5 @@ class ApplicationController < ActionController::Base
 		clearance_batch = ClearanceBatch.where(id: batch_id).first
 		return true if clearance_batch.status == "archived"
 	end
+
 end

@@ -2,11 +2,10 @@ class ClearanceBatchesController < ApplicationController
   before_action :set_clearance_batch, only: [:show, :edit]
 
   def index
-    @clearance_batches  = ClearanceBatch.paginate(:page => params[:page])
+    @clearance_batches  = ClearanceBatch.paginate(:page => params[:page]).order('id ASC')
     if params[:archived]
       clearance_batch = ClearanceBatch.where(id: params[:archived]).first
       clearance_batch = clearance_batch.update(status: "archived")
-      render :index, layout: false
     elsif params[:page]
       render partial: "clearance_batches_table", layout: false
     else
@@ -27,8 +26,7 @@ class ClearanceBatchesController < ApplicationController
       redirect_to clearance_batch_path
     else
       render :edit
-    end
-    
+    end   
   end
 
   def potential_clearance_item
@@ -72,7 +70,6 @@ class ClearanceBatchesController < ApplicationController
   end
 
   def destroy
-
     @clearance_batch = ClearanceBatch.find(params[:id])
     item_id = params[:item_id].to_i
     if item_id.is_a?(Integer) && item_id != 0
@@ -80,10 +77,13 @@ class ClearanceBatchesController < ApplicationController
       item.reverse_clearanced!
       render :nothing => true, :status => 204
     else
-      @clearance_batch.items.each do |item|
-        item.reverse_clearanced!
+      p params
+      ClearanceBatch.transaction do 
+        @clearance_batch.items.each do |item|
+          item.reverse_clearanced!
+        end
+        @clearance_batch.destroy!
       end
-      @clearance_batch.destroy!
       render :nothing => true, :status => 204
     end
 

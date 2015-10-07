@@ -1,7 +1,6 @@
 source "https://rubygems.org"
 
 gem "rails", "~> 4"
-gem "sqlite3"
 gem "sass-rails"
 gem "uglifier"
 gem "coffee-rails"
@@ -10,6 +9,13 @@ gem "bootstrap-sass"
 gem "awesome_print"
 gem "font-awesome-rails"
 gem 'will_paginate'
+gem 'pg'
+
+
+group :production do
+  gem 'thin'
+  gem 'pg'
+end
 
 
 group :test, :development do

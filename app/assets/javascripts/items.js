@@ -7,7 +7,6 @@ var Items = (function(){
 			var url = $target.attr('href');
 
 			$.get(url).done(function(data){
-				console.log(data);
 				$('#items').empty()
 				$('#items').append(data);
 			})
@@ -21,6 +20,8 @@ var Items = (function(){
 			var $target = $(event.target);
 			var url = $target.attr('action');
 			var data = $target.serialize();
+			$('.flash-messages').empty();
+
 
 			$.get(url, data).done(function(response){
 				$('#items').empty();
@@ -28,7 +29,6 @@ var Items = (function(){
 				$('#search').val("");
 
 			}).fail(function(error){
-				$('.flash-messages').empty();
 				$('.flash-messages').append(error.responseText).show();
 			})
 		})

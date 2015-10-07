@@ -11,11 +11,12 @@
 
 	<% if @items %>
 		<div class="displayItemWrapper">
-			<table id="itemsTable" class="table table-hover">
+			<table id="itemsTable" class="table">
 			  <thead><%= render "items/item_thead" %></thead>
 			  <tbody><%= render "tbody_multiple_items" %></tbody>
 			</table>
 		</div>
+		<%= render "confirm_before_archive_modal" %>
   <% end %>
 </div>
 
